@@ -1,1 +1,1 @@
-DROP KEYSPACE Test;
+DROP KEYSPACE Clinic;
