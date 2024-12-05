@@ -1,0 +1,59 @@
+description = 'CassandraDemo'
+apply plugin: 'base'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+allprojects {
+  tasks.withType(JavaExec) {
+    doFirst {
+//      println commandLine
+   }
+  }
+  sourceCompatibility = 1.17
+  targetCompatibility = 1.17
+}
+
+
+repositories {
+	maven { url "https://repo.springsource.org/libs-milestone" }
+	maven { url "https://repo.springsource.org/libs-release" }
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.+'
+  implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
+
+  implementation 'com.datastax.cassandra:cassandra-driver-core:3.3.0'
+  //implementation 'com.datastax.oss:java-driver-core:4.0.1'
+  //implementation 'com.datastax.oss:java-driver-query-builder:4.0.1'
+  implementation 'org.apache.cassandra:cassandra-all:3.11.0'
+  //implementation 'org.apache.cassandra:cassandra-all:4.0.3'
+}
+
+configurations.all {
+//    exclude module: 'logback-classic'
+}
+
+project.buildDir = 'bin'
+
+mainClassName = "cassdemo.Main"
+applicationDefaultJvmArgs = ['--add-opens', 'java.base/jdk.internal.misc=ALL-UNNAMED', '--add-opens', 'java.base/java.nio=ALL-UNNAMED', '--add-opens', 'java.base/java.security=ALL-UNNAMED', '--add-opens', 'jdk.unsupported/sun.misc=ALL-UNNAMED', '--add-opens', 'java.base/sun.security.action=ALL-UNNAMED', '--add-opens', 'jdk.naming.rmi/com.sun.jndi.rmi.registry=ALL-UNNAMED', '--add-opens', 'java.base/sun.net=ALL-UNNAMED', '--add-opens', 'java.base/java.lang=ALL-UNNAMED', '--add-opens', 'java.base/java.lang.reflect=ALL-UNNAMED', '--add-opens', 'java.base/sun.nio.ch=ALL-UNNAMED']
+
+
+run {
+    //systemProperty 'logback.configurationFile', 'logback.xml'
+    standardInput = System.in
+    
+    if(project.hasProperty('myargs')){
+        //String[] myargsArray = myargs.split(',')
+        String[] myargsArray = myargs.split(' ')
+        for (int i = 0; i < myargsArray.length; i++) 
+            myargsArray[i] = myargsArray[i].trim();
+        args(myargsArray)
+    }
+}
+
+
