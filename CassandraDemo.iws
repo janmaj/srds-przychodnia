@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/util/Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/srds-przychodnia.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/srds-przychodnia.main.iml" afterDir="false" />
+    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Implementacja algorytmu przydziału wizyt do lekarzy">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CassandraDemo.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/BackendException.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/BackendException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/MedicalScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/MedicalScheduler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.tar" beforeDir="false" afterPath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.tar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.zip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/libs/srds-przychodnia.jar" beforeDir="false" afterPath="$PROJECT_DIR$/bin/libs/srds-przychodnia.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/scripts/srds-przychodnia" beforeDir="false" afterPath="$PROJECT_DIR$/bin/scripts/srds-przychodnia" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/scripts/srds-przychodnia.bat" beforeDir="false" afterPath="$PROJECT_DIR$/bin/scripts/srds-przychodnia.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/MedicalScheduler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/create_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/create_schema.cql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/MedicalScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/MedicalScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/MedicalScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/util/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +140,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "troche__rozszerzone",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/jan/Studia/SRDS/srds-przychodnia"
+    "last_opened_file_path": "/home/jan/Studia/SRDS/srds-przychodnia",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>
   <component name="RunManager">
@@ -223,12 +219,23 @@
       <option name="presentableId" value="Default" />
       <updated>1666621200982</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implementacja algorytmu przydziału wizyt do lekarzy">
+      <option name="closed" value="true" />
+      <created>1734289087319</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734289087319</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.cql" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implementacja algorytmu przydziału wizyt do lekarzy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementacja algorytmu przydziału wizyt do lekarzy" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

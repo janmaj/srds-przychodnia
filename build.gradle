@@ -51,7 +51,7 @@ run {
         //String[] myargsArray = myargs.split(',')
         String[] myargsArray = myargs.split(' ')
         for (int i = 0; i < myargsArray.length; i++) 
-            myargsArray[i] = myargsArray[i].trim();
+            myargsArray[i] = myargsArray[i].trim()
         args(myargsArray)
     }
 }

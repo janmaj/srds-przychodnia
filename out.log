@@ -1,17 +1,343 @@
-500  INFO  c.d.driver.core.GuavaCompatibility: Detected Guava >= 19 in the classpath, using modern compatibility layer
-863  INFO  c.datastax.driver.core.ClockFactory: Using native clock to generate timestamps.
-1089 INFO  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, using it
-1700 INFO  c.d.d.c.p.DCAwareRoundRobinPolicy: Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
-1707 INFO  com.datastax.driver.core.Cluster: New Cassandra host /127.0.0.1:9042 added
-1707 INFO  com.datastax.driver.core.Cluster: New Cassandra host /172.19.0.4:9042 added
-1707 INFO  com.datastax.driver.core.Cluster: New Cassandra host /172.19.0.3:9042 added
-1904 INFO  cassdemo.backend.MedicalScheduler: Doctor added: Dr. Smith (general)
-1908 INFO  cassdemo.backend.MedicalScheduler: Doctor added: Dr. Johnson (general)
-1958 INFO  cassdemo.backend.MedicalScheduler: Appointment added for John Doe
-1962 INFO  cassdemo.backend.MedicalScheduler: Appointment added for Jane Roe
-1975 INFO  cassdemo.backend.MedicalScheduler: Now processing appointment with id 1002, specialty general
-1994 INFO  cassdemo.backend.MedicalScheduler: Doctor appointment for doctor 1 sheduled on 2024-12-16T08:00
-3006 INFO  cassdemo.backend.MedicalScheduler: Now processing appointment with id 1001, specialty general
-3020 INFO  cassdemo.backend.MedicalScheduler: slot time: 08:00:00
-3020 INFO  cassdemo.backend.MedicalScheduler: slot local time: 08:00
-3026 INFO  cassdemo.backend.MedicalScheduler: Doctor appointment for doctor 1 sheduled on 2024-12-16T08:30
+396  INFO  c.d.driver.core.GuavaCompatibility: Detected Guava >= 19 in the classpath, using modern compatibility layer
+732  INFO  c.datastax.driver.core.ClockFactory: Using native clock to generate timestamps.
+892  INFO  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, using it
+1421 INFO  c.d.d.c.p.DCAwareRoundRobinPolicy: Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+1424 INFO  com.datastax.driver.core.Cluster: New Cassandra host /127.0.0.1:9042 added
+1424 INFO  com.datastax.driver.core.Cluster: New Cassandra host /172.19.0.4:9042 added
+1424 INFO  com.datastax.driver.core.Cluster: New Cassandra host /172.19.0.3:9042 added
+1521 INFO  cassdemo.backend.ClinicBackend: Doctor added: Dr. Smith (general)
+1524 INFO  cassdemo.backend.ClinicBackend: Doctor added: Dr. Johnson (general)
+1526 INFO  cassdemo.backend.ClinicBackend: Doctor added: Dr. Williams (cardiology)
+1530 INFO  cassdemo.backend.ClinicBackend: Doctor added: Dr. Walker (orthopedics)
+1532 INFO  cassdemo.backend.ClinicBackend: Starting scheduling for specialty cardiology...
+1533 INFO  cassdemo.backend.ClinicBackend: Starting scheduling for specialty cardiology...
+1533 INFO  cassdemo.backend.ClinicBackend: Starting scheduling for specialty orthopedics...
+1533 INFO  cassdemo.backend.ClinicBackend: Starting scheduling for specialty orthopedics...
+1534 INFO  cassdemo.backend.ClinicBackend: Starting scheduling for specialty general...
+1534 INFO  cassdemo.backend.ClinicBackend: Starting scheduling for specialty general...
+1536 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+1537 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+1538 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 720940879, specialty cardiology
+1540 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 720940879, specialty cardiology
+1540 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 196984714, specialty general
+1542 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 196984714, specialty general
+1622 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T08:00
+1622 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T08:00
+1623 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T08:00
+1623 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T08:00
+4040 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+4040 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+4636 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 2067920267, specialty cardiology
+4639 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 645202318, specialty general
+4640 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 645202318, specialty general
+4640 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 2067920267, specialty cardiology
+4643 INFO  cassdemo.backend.ClinicBackend: slot time: 08:00:00
+4643 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:00
+4646 INFO  cassdemo.backend.ClinicBackend: slot time: 08:00:00
+4646 INFO  cassdemo.backend.ClinicBackend: slot time: 08:00:00
+4646 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:00
+4647 INFO  cassdemo.backend.ClinicBackend: slot time: 08:00:00
+4647 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:00
+4647 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:00
+4647 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T08:30
+4652 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T08:30
+4655 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T08:30
+4656 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T08:30
+6544 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+6545 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+6656 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 553743613, specialty cardiology
+6661 INFO  cassdemo.backend.ClinicBackend: slot time: 08:30:00
+6661 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:30
+6662 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 553743613, specialty cardiology
+6664 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 242194607, specialty general
+6664 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 242194607, specialty general
+6665 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T09:00
+6668 INFO  cassdemo.backend.ClinicBackend: slot time: 09:00:00
+6668 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:00
+6670 INFO  cassdemo.backend.ClinicBackend: slot time: 08:30:00
+6670 INFO  cassdemo.backend.ClinicBackend: slot time: 08:30:00
+6670 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:30
+6670 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:30
+6673 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T09:30
+6676 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T09:00
+6676 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T09:00
+9047 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+9048 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+9673 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 2849594, specialty cardiology
+9678 INFO  cassdemo.backend.ClinicBackend: slot time: 09:30:00
+9678 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:30
+9681 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T10:00
+9682 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 2849594, specialty cardiology
+9686 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1783482502, specialty general
+9686 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1783482502, specialty general
+9687 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+9687 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+9691 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T10:30
+9692 INFO  cassdemo.backend.ClinicBackend: slot time: 09:00:00
+9692 INFO  cassdemo.backend.ClinicBackend: slot time: 09:00:00
+9693 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:00
+9693 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:00
+9698 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T09:30
+9698 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T09:30
+11550 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+11551 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+11564 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 199938430, specialty orthopedics
+11564 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 199938430, specialty orthopedics
+11572 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T08:00
+11572 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T08:00
+11705 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1506112646, specialty general
+11705 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1506112646, specialty general
+11710 INFO  cassdemo.backend.ClinicBackend: slot time: 09:30:00
+11710 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:30
+11710 INFO  cassdemo.backend.ClinicBackend: slot time: 09:30:00
+11710 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:30
+11715 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T10:00
+11715 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T10:00
+14053 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+14054 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+14695 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 235345033, specialty cardiology
+14699 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+14699 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+14702 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T11:00
+14704 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 235345033, specialty cardiology
+14709 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+14709 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+14712 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T11:30
+15707 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 224580776, specialty cardiology
+15711 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+15711 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+15714 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T12:00
+15716 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 224580776, specialty cardiology
+15720 INFO  cassdemo.backend.ClinicBackend: slot time: 12:00:00
+15721 INFO  cassdemo.backend.ClinicBackend: slot local time: 12:00
+15723 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T12:30
+16555 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+16557 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+16729 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 869784216, specialty general
+16729 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 869784216, specialty general
+16734 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+16734 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+16734 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+16734 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+16739 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T10:00
+16741 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T10:00
+17744 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1646869025, specialty general
+17745 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1646869025, specialty general
+17749 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+17749 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+17749 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+17749 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+17752 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+17752 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+17752 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+17752 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+17755 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T10:30
+17756 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T10:30
+19058 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+19059 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+19724 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 446936680, specialty cardiology
+19728 INFO  cassdemo.backend.ClinicBackend: slot time: 12:30:00
+19728 INFO  cassdemo.backend.ClinicBackend: slot local time: 12:30
+19730 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T13:00
+19733 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 446936680, specialty cardiology
+19736 INFO  cassdemo.backend.ClinicBackend: slot time: 13:00:00
+19737 INFO  cassdemo.backend.ClinicBackend: slot local time: 13:00
+19739 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T13:30
+19762 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1151207052, specialty general
+19762 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1151207052, specialty general
+19767 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+19767 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+19768 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+19768 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+19770 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+19770 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+19771 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+19771 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+19773 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T10:30
+19774 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T10:30
+21560 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+21562 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+21596 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1838256341, specialty orthopedics
+21596 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1838256341, specialty orthopedics
+21600 INFO  cassdemo.backend.ClinicBackend: slot time: 08:00:00
+21600 INFO  cassdemo.backend.ClinicBackend: slot time: 08:00:00
+21600 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:00
+21601 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:00
+21603 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T08:30
+21603 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T08:30
+21780 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 216790958, specialty general
+21780 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 216790958, specialty general
+21783 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+21784 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+21784 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+21784 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+21786 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+21786 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+21787 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+21787 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+21789 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T11:00
+21790 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T11:00
+24063 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+24066 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+24798 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1513638220, specialty general
+24798 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1513638220, specialty general
+24802 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+24802 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+24802 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+24802 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+24804 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+24804 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+24804 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+24804 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+24807 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T11:00
+24807 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T11:00
+25812 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1147710020, specialty general
+25812 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1147710020, specialty general
+25817 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+25817 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+25819 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+25819 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+25821 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+25821 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+25822 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+25822 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+25824 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T11:30
+25826 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T11:30
+26566 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+26568 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+26615 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1530954510, specialty orthopedics
+26615 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1530954510, specialty orthopedics
+26618 INFO  cassdemo.backend.ClinicBackend: slot time: 08:30:00
+26618 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:30
+26618 INFO  cassdemo.backend.ClinicBackend: slot time: 08:30:00
+26618 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:30
+26620 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T09:00
+26621 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T09:00
+26745 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1851680755, specialty cardiology
+26748 INFO  cassdemo.backend.ClinicBackend: slot time: 13:30:00
+26749 INFO  cassdemo.backend.ClinicBackend: slot local time: 13:30
+26751 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T14:00
+26753 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1851680755, specialty cardiology
+26757 INFO  cassdemo.backend.ClinicBackend: slot time: 14:00:00
+26757 INFO  cassdemo.backend.ClinicBackend: slot local time: 14:00
+26759 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-16T14:30
+29069 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+29070 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+29629 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1998937431, specialty orthopedics
+29634 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1998937431, specialty orthopedics
+29641 INFO  cassdemo.backend.ClinicBackend: slot time: 09:00:00
+29641 INFO  cassdemo.backend.ClinicBackend: slot time: 09:00:00
+29642 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:00
+29643 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:00
+29654 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T09:30
+29654 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T09:30
+29833 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 272591962, specialty general
+29833 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 272591962, specialty general
+29836 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+29836 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+29836 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+29836 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+29838 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+29838 INFO  cassdemo.backend.ClinicBackend: slot time: 11:00:00
+29838 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+29838 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:00
+29840 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T11:30
+29840 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T11:30
+31571 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+31572 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+31669 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 502510086, specialty orthopedics
+31671 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 502510086, specialty orthopedics
+31672 INFO  cassdemo.backend.ClinicBackend: slot time: 09:30:00
+31673 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:30
+31673 INFO  cassdemo.backend.ClinicBackend: slot time: 09:30:00
+31674 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:30
+31675 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T10:00
+31676 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T10:00
+31762 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 473480542, specialty cardiology
+31765 INFO  cassdemo.backend.ClinicBackend: slot time: 14:30:00
+31766 INFO  cassdemo.backend.ClinicBackend: slot local time: 14:30
+31768 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-17T08:00
+34073 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+34074 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+34682 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1367915627, specialty orthopedics
+34682 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1367915627, specialty orthopedics
+34685 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+34685 INFO  cassdemo.backend.ClinicBackend: slot time: 10:00:00
+34685 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+34685 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:00
+34687 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T10:30
+34687 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T10:30
+34849 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 667715677, specialty general
+34849 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 667715677, specialty general
+34853 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+34853 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+34853 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+34853 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+34855 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+34855 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+34855 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+34855 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+34857 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T12:00
+34857 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T12:00
+36575 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+36576 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+36779 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1315162367, specialty cardiology
+36779 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1315162367, specialty cardiology
+36782 INFO  cassdemo.backend.ClinicBackend: slot time: 08:00:00
+36782 INFO  cassdemo.backend.ClinicBackend: slot time: 08:00:00
+36782 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:00
+36782 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:00
+36784 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-17T08:30
+36784 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-17T08:30
+36863 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 340950763, specialty general
+36863 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 340950763, specialty general
+36868 INFO  cassdemo.backend.ClinicBackend: slot time: 12:00:00
+36868 INFO  cassdemo.backend.ClinicBackend: slot local time: 12:00
+36868 INFO  cassdemo.backend.ClinicBackend: slot time: 12:00:00
+36869 INFO  cassdemo.backend.ClinicBackend: slot local time: 12:00
+36870 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+36870 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+36870 INFO  cassdemo.backend.ClinicBackend: slot time: 11:30:00
+36870 INFO  cassdemo.backend.ClinicBackend: slot local time: 11:30
+36872 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T12:00
+36872 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2024-12-16T12:00
+39077 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+39078 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+39696 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1782027987, specialty orthopedics
+39696 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 1782027987, specialty orthopedics
+39699 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+39699 INFO  cassdemo.backend.ClinicBackend: slot time: 10:30:00
+39699 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+39699 INFO  cassdemo.backend.ClinicBackend: slot local time: 10:30
+39701 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T11:00
+39701 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 4 scheduled on 2024-12-16T11:00
+39790 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 549578038, specialty cardiology
+39790 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 549578038, specialty cardiology
+39793 INFO  cassdemo.backend.ClinicBackend: slot time: 08:30:00
+39793 INFO  cassdemo.backend.ClinicBackend: slot time: 08:30:00
+39793 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:30
+39793 INFO  cassdemo.backend.ClinicBackend: slot local time: 08:30
+39795 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-17T09:00
+39795 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-17T09:00
+41580 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+41580 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jane Doe
+41800 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 601999904, specialty cardiology
+41800 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 601999904, specialty cardiology
+41802 INFO  cassdemo.backend.ClinicBackend: slot time: 09:00:00
+41802 INFO  cassdemo.backend.ClinicBackend: slot time: 09:00:00
+41803 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:00
+41803 INFO  cassdemo.backend.ClinicBackend: slot local time: 09:00
+41804 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-17T09:30
+41804 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2024-12-17T09:30
+41881 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 582483352, specialty general
+41881 INFO  cassdemo.backend.ClinicBackend: Now processing appointment with id 582483352, specialty general
+41884 INFO  cassdemo.backend.ClinicBackend: slot time: 12:00:00
+41884 INFO  cassdemo.backend.ClinicBackend: slot time: 12:00:00
+41884 INFO  cassdemo.backend.ClinicBackend: slot local time: 12:00
+41884 INFO  cassdemo.backend.ClinicBackend: slot local time: 12:00
+41886 INFO  cassdemo.backend.ClinicBackend: slot time: 12:00:00
+41886 INFO  cassdemo.backend.ClinicBackend: slot time: 12:00:00
+41886 INFO  cassdemo.backend.ClinicBackend: slot local time: 12:00
+41886 INFO  cassdemo.backend.ClinicBackend: slot local time: 12:00
+41888 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T12:30
+41888 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2024-12-16T12:30
