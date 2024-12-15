@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/util/Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/srds-przychodnia.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/srds-przychodnia.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CassandraDemo.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/BackendException.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/BackendException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/MedicalScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/MedicalScheduler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.tar" beforeDir="false" afterPath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.zip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/libs/srds-przychodnia.jar" beforeDir="false" afterPath="$PROJECT_DIR$/bin/libs/srds-przychodnia.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/scripts/srds-przychodnia" beforeDir="false" afterPath="$PROJECT_DIR$/bin/scripts/srds-przychodnia" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/scripts/srds-przychodnia.bat" beforeDir="false" afterPath="$PROJECT_DIR$/bin/scripts/srds-przychodnia.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schema/create_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/create_schema.cql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/drop_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/drop_schema.cql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/load_data.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/load_data.cql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/MedicalScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/MedicalScheduler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,33 +87,48 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "janmaj"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;janmaj&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "git@github.com:janmaj/srds-przychodnia.git",
-    "accountId": "473f3fec-c40c-4afd-aaf9-ec589cb685d1"
+    "url": "https://github.com/janmaj/srds-przychodnia.git",
+    "accountId": "36903e54-6d7f-472f-8c7c-55daa13949dd"
   }
 }]]></component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2GaKLkWBFNU1pZXyvkqnm4bLKd4" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state />
     </entry>
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
@@ -110,9 +139,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.srds-przychodnia [:cassdemo.Main.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "troche__rozszerzone",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/jan/Studia/SRDS/srds-przychodnia"
   }

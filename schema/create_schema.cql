@@ -13,7 +13,7 @@ CREATE TABLE Appointments (
     appointment_id int,
     patient_first_name text,
     patient_last_name text,
-    PRIMARY KEY (specialty, priority, timestamp)
+    PRIMARY KEY (specialty, priority, timestamp, appointment_id)
 ) WITH CLUSTERING ORDER BY (priority DESC, timestamp ASC);
 
 

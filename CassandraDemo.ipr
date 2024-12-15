@@ -11,13 +11,18 @@
       <entry name="!?*.groovy" />
       <entry name="!?*.java" />
     </wildcardResourcePatterns>
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="17">
+      <module name="IdeaProjects.srds-przychodnia.main" target="1.8" />
+      <module name="IdeaProjects.srds-przychodnia.test" target="1.8" />
+      <module name="srds-przychodnia" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -62,6 +67,8 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/IdeaProjects.srds-przychodnia.main.iml" filepath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IdeaProjects.srds-przychodnia.test.iml" filepath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/srds-przychodnia.iml" filepath="$PROJECT_DIR$/srds-przychodnia.iml" />
       <module fileurl="file://$PROJECT_DIR$/srds-przychodnia.main.iml" filepath="$PROJECT_DIR$/srds-przychodnia.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/srds-przychodnia.test.iml" filepath="$PROJECT_DIR$/srds-przychodnia.test.iml" />
@@ -100,6 +107,11 @@
       <option name="id" value="MavenRepo" />
       <option name="name" value="MavenRepo" />
       <option name="url" value="https://repo.maven.apache.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="MavenLocal" />
+      <option name="name" value="MavenLocal" />
+      <option name="url" value="file:$MAVEN_REPOSITORY$/" />
     </remote-repository>
   </component>
   <component name="SvnBranchConfigurationManager">
@@ -168,7 +180,7 @@
     <library name="Gradle: com.datastax.cassandra:cassandra-driver-core:3.3.0" type="java-imported" external-system-id="GRADLE">
       <properties groupId="com.datastax.cassandra" artifactId="cassandra-driver-core" version="3.3.0" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.datastax.cassandra/cassandra-driver-core/3.3.0/7e569fcd731fdd71ef6dff8ecd318d1b57a63ef2/cassandra-driver-core-3.3.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/datastax/cassandra/cassandra-driver-core/3.3.0/cassandra-driver-core-3.3.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -192,7 +204,7 @@
     <library name="Gradle: com.github.jnr:jffi:1.2.10" type="java-imported" external-system-id="GRADLE">
       <properties groupId="com.github.jnr" artifactId="jffi" version="1.2.10" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jnr/jffi/1.2.10/d58fdb2283456bc3f049bfbef40b592fa1aaa975/jffi-1.2.10.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/jnr/jffi/1.2.10/jffi-1.2.10.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -200,7 +212,7 @@
     <library name="Gradle: com.github.jnr:jffi:native:1.2.10" type="java-imported" external-system-id="GRADLE">
       <properties groupId="com.github.jnr" artifactId="jffi" version="1.2.10" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jnr/jffi/1.2.10/7de1bb566847c2ed71d91ca063a8af604f250ade/jffi-1.2.10-native.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/jnr/jffi/1.2.10/jffi-1.2.10-native.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -208,7 +220,7 @@
     <library name="Gradle: com.github.jnr:jnr-constants:0.9.0" type="java-imported" external-system-id="GRADLE">
       <properties groupId="com.github.jnr" artifactId="jnr-constants" version="0.9.0" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jnr/jnr-constants/0.9.0/6894684e17a84cd500836e82b5e6c674b4d4dda6/jnr-constants-0.9.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/jnr/jnr-constants/0.9.0/jnr-constants-0.9.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -216,7 +228,7 @@
     <library name="Gradle: com.github.jnr:jnr-ffi:2.0.7" type="java-imported" external-system-id="GRADLE">
       <properties groupId="com.github.jnr" artifactId="jnr-ffi" version="2.0.7" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jnr/jnr-ffi/2.0.7/f0968c5bb5a283ebda2df3604c2c1129d45196e3/jnr-ffi-2.0.7.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/jnr/jnr-ffi/2.0.7/jnr-ffi-2.0.7.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -224,7 +236,7 @@
     <library name="Gradle: com.github.jnr:jnr-posix:3.0.27" type="java-imported" external-system-id="GRADLE">
       <properties groupId="com.github.jnr" artifactId="jnr-posix" version="3.0.27" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jnr/jnr-posix/3.0.27/f7441d13187d93d59656ac8f800cba3043935b59/jnr-posix-3.0.27.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/jnr/jnr-posix/3.0.27/jnr-posix-3.0.27.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -232,7 +244,7 @@
     <library name="Gradle: com.github.jnr:jnr-x86asm:1.0.2" type="java-imported" external-system-id="GRADLE">
       <properties groupId="com.github.jnr" artifactId="jnr-x86asm" version="1.0.2" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jnr/jnr-x86asm/1.0.2/6936bbd6c5b235665d87bd450f5e13b52d4b48/jnr-x86asm-1.0.2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/jnr/jnr-x86asm/1.0.2/jnr-x86asm-1.0.2.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -248,7 +260,7 @@
     <library name="Gradle: com.google.guava:guava:19.0" type="java-imported" external-system-id="GRADLE">
       <properties groupId="com.google.guava" artifactId="guava" version="19.0" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9/guava-19.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/19.0/guava-19.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -336,7 +348,7 @@
     <library name="Gradle: io.dropwizard.metrics:metrics-core:3.2.2" type="java-imported" external-system-id="GRADLE">
       <properties groupId="io.dropwizard.metrics" artifactId="metrics-core" version="3.2.2" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.dropwizard.metrics/metrics-core/3.2.2/cd9886f498ee2ab2d994f0c779e5553b2c450416/metrics-core-3.2.2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/dropwizard/metrics/metrics-core/3.2.2/metrics-core-3.2.2.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -363,7 +375,7 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/externalAnnotations/io/netty/netty-buffer/4.1.27.Final-an1/netty-buffer-4.1.27.Final-an1-annotations.zip!/" />
       </ANNOTATIONS>
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.0.47.Final/b736f6a84b56c571c589318f4e585bce98d8bb77/netty-buffer-4.0.47.Final.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-buffer/4.0.47.Final/netty-buffer-4.0.47.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -371,7 +383,7 @@
     <library name="Gradle: io.netty:netty-codec:4.0.47.Final" type="java-imported" external-system-id="GRADLE">
       <properties groupId="io.netty" artifactId="netty-codec" version="4.0.47.Final" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.0.47.Final/36d5841bc8da8f75d32f8af7e7c8e79bdd3e254/netty-codec-4.0.47.Final.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-codec/4.0.47.Final/netty-codec-4.0.47.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -382,7 +394,7 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/externalAnnotations/io/netty/netty-common/4.1.27.Final-an1/netty-common-4.1.27.Final-an1-annotations.zip!/" />
       </ANNOTATIONS>
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.0.47.Final/9e98137fd1fa1b1a08477c172c2efd112cc95616/netty-common-4.0.47.Final.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-common/4.0.47.Final/netty-common-4.0.47.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -390,7 +402,7 @@
     <library name="Gradle: io.netty:netty-handler:4.0.47.Final" type="java-imported" external-system-id="GRADLE">
       <properties groupId="io.netty" artifactId="netty-handler" version="4.0.47.Final" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.0.47.Final/caf9f8c2bd54938c01548afa5082b6341ddd30a8/netty-handler-4.0.47.Final.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-handler/4.0.47.Final/netty-handler-4.0.47.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -401,7 +413,7 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/externalAnnotations/io/netty/netty-transport/4.1.27.Final-an1/netty-transport-4.1.27.Final-an1-annotations.zip!/" />
       </ANNOTATIONS>
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.0.47.Final/f5dc76021988fd1dc4e7bcb2fb0bc237b8b2098d/netty-transport-4.0.47.Final.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-transport/4.0.47.Final/netty-transport-4.0.47.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -617,7 +629,7 @@
     <library name="Gradle: org.ow2.asm:asm-analysis:5.0.3" type="java-imported" external-system-id="GRADLE">
       <properties groupId="org.ow2.asm" artifactId="asm-analysis" version="5.0.3" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/5.0.3/c7126aded0e8e13fed5f913559a0dd7b770a10f3/asm-analysis-5.0.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-analysis/5.0.3/asm-analysis-5.0.3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -625,7 +637,7 @@
     <library name="Gradle: org.ow2.asm:asm-commons:5.0.3" type="java-imported" external-system-id="GRADLE">
       <properties groupId="org.ow2.asm" artifactId="asm-commons" version="5.0.3" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/5.0.3/a7111830132c7f87d08fe48cb0ca07630f8cb91c/asm-commons-5.0.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-commons/5.0.3/asm-commons-5.0.3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -633,7 +645,7 @@
     <library name="Gradle: org.ow2.asm:asm-tree:5.0.3" type="java-imported" external-system-id="GRADLE">
       <properties groupId="org.ow2.asm" artifactId="asm-tree" version="5.0.3" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/5.0.3/287749b48ba7162fb67c93a026d690b29f410bed/asm-tree-5.0.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -641,7 +653,7 @@
     <library name="Gradle: org.ow2.asm:asm-util:5.0.3" type="java-imported" external-system-id="GRADLE">
       <properties groupId="org.ow2.asm" artifactId="asm-util" version="5.0.3" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/5.0.3/1512e5571325854b05fb1efce1db75fcced54389/asm-util-5.0.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-util/5.0.3/asm-util-5.0.3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -649,7 +661,7 @@
     <library name="Gradle: org.ow2.asm:asm:5.0.3" type="java-imported" external-system-id="GRADLE">
       <properties groupId="org.ow2.asm" artifactId="asm" version="5.0.3" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/5.0.3/dcc2193db20e19e1feca8b1240dbbc4e190824fa/asm-5.0.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
