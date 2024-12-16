@@ -4,7 +4,9 @@ import com.datastax.driver.core.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 public class ClinicBackend {
@@ -14,10 +16,15 @@ public class ClinicBackend {
     private static PreparedStatement INSERT_APPOINTMENT;
     private static PreparedStatement INSERT_DOCTOR_APPOINTMENT;
     private static PreparedStatement SELECT_NEXT_APPOINTMENT;
+    private static PreparedStatement SELECT_PENDING_APPOINTMENTS;
     private static PreparedStatement SELECT_DOCTOR_BY_SPECIALTY;
     private static PreparedStatement INSERT_DOCTOR;
     private static PreparedStatement DELETE_APPOINTMENT;
     private static PreparedStatement SELECT_LATEST_DOCTOR_APPOINTMENT;
+    private static PreparedStatement SELECT_DOCTOR_SLOT;
+    private static PreparedStatement UPSERT_OWNERSHIP;
+    private static PreparedStatement SELECT_OWNERSHIP;
+    private static PreparedStatement DELETE_OWNERSHIP;
     private final Session session;
 
     // Constructor
@@ -39,11 +46,21 @@ public class ClinicBackend {
 
             SELECT_NEXT_APPOINTMENT = session.prepare("SELECT * FROM Appointments WHERE specialty = ? ORDER BY priority DESC, timestamp ASC LIMIT 1;");
 
+            SELECT_PENDING_APPOINTMENTS = session.prepare("SELECT * FROM Appointments WHERE specialty = ? ORDER BY priority DESC, timestamp ASC LIMIT 50;");
+
             SELECT_DOCTOR_BY_SPECIALTY = session.prepare("SELECT doctor_id, start_hours, end_hours FROM Doctors WHERE specialty = ?;");
 
             INSERT_DOCTOR = session.prepare("INSERT INTO Doctors (doctor_id, name, specialty, start_hours, end_hours) " + "VALUES (?, ?, ?, ?, ?);");
 
             SELECT_LATEST_DOCTOR_APPOINTMENT = session.prepare("SELECT * FROM DoctorAppointments WHERE doctor_id = ? ORDER BY appointment_date DESC, time_slot DESC LIMIT 1;");
+
+            UPSERT_OWNERSHIP = session.prepare("INSERT INTO AppointmentOwnership (appointment_id, scheduler_id) VALUES (?, ?);");
+
+            SELECT_OWNERSHIP = session.prepare("SELECT * FROM AppointmentOwnership WHERE appointment_id = ?;");
+
+            DELETE_OWNERSHIP = session.prepare("DELETE FROM AppointmentOwnership WHERE appointment_id = ?;");
+
+            SELECT_DOCTOR_SLOT = session.prepare("SELECT * FROM DoctorAppointments WHERE doctor_id = ? AND appointment_date = ? AND time_slot = ?;");
 
             DELETE_APPOINTMENT = session.prepare("DELETE FROM Appointments WHERE specialty = ? AND priority = ? AND timestamp = ? AND appointment_id = ?;");
 
@@ -87,6 +104,32 @@ public class ClinicBackend {
         return rs.one();
     }
 
+    public ResultSet selectPendingAppointments(String specialty) {
+        BoundStatement bs = new BoundStatement(SELECT_PENDING_APPOINTMENTS);
+        bs.bind(specialty);
+        return session.execute(bs);
+    }
+
+    public void claimAppointmentOwnership(int appointmentId, int schedulerId) {
+        BoundStatement bs = new BoundStatement(UPSERT_OWNERSHIP);
+        bs.bind(appointmentId, schedulerId);
+        session.execute(bs);
+    }
+
+    public Row selectOwnership(int appointmentId) {
+        BoundStatement bs = new BoundStatement(SELECT_OWNERSHIP);
+        bs.bind(appointmentId);
+        ResultSet rs = session.execute(bs);
+        if (rs.isExhausted()) return null;
+        return rs.one();
+    }
+
+    public void deleteOwnership(int appointmentId) {
+        BoundStatement bs = new BoundStatement(DELETE_OWNERSHIP);
+        bs.bind(appointmentId);
+        session.execute(bs);
+    }
+
     public Row selectLatestDoctorAppointment(int doctorId) {
         BoundStatement selectLatest = new BoundStatement(SELECT_LATEST_DOCTOR_APPOINTMENT);
         selectLatest.bind(doctorId);
@@ -102,6 +145,15 @@ public class ClinicBackend {
         selectDoctor.bind(specialty);
 
         return session.execute(selectDoctor);
+    }
+
+    public Row checkScheduleSlot(int doctorId, LocalDate appointmentDate, LocalTime timeSlot) {
+        BoundStatement bs = new BoundStatement(SELECT_DOCTOR_SLOT);
+        com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(appointmentDate.getYear(), appointmentDate.getMonthValue(), appointmentDate.getDayOfMonth());
+        bs.bind(doctorId, cassandraDate, timeSlot.toNanoOfDay());
+        ResultSet rs = session.execute(bs);
+        if (rs.isExhausted()) return null;
+        return rs.one();
     }
 
     public void scheduleDoctorAppointment(int doctorId, int appointmentId, LocalDateTime timestamp) throws BackendException {

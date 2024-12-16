@@ -7,18 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Implementacja algorytmu przydziału wizyt do lekarzy">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandraDemo.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.ipr" afterDir="false" />
+    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Utworzenie klas do przetwarzania równoległego">
       <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/backend/MedicalScheduler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/MedicalScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema/create_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/create_schema.cql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,12 +98,12 @@
     &quot;assignee&quot;: &quot;janmaj&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/janmaj/srds-przychodnia.git",
-    "accountId": "36903e54-6d7f-472f-8c7c-55daa13949dd"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/janmaj/srds-przychodnia.git&quot;,
+    &quot;accountId&quot;: &quot;36903e54-6d7f-472f-8c7c-55daa13949dd&quot;
   }
-}]]></component>
+}</component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
@@ -132,18 +127,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.srds-przychodnia [:cassdemo.Main.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "troche__rozszerzone",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/jan/Studia/SRDS/srds-przychodnia",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.srds-przychodnia [:cassdemo.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;troche__rozszerzone&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jan/Studia/SRDS/srds-przychodnia&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
@@ -227,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734289087319</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Utworzenie klas do przetwarzania równoległego">
+      <option name="closed" value="true" />
+      <created>1734295228737</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734295228737</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -235,7 +238,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implementacja algorytmu przydziału wizyt do lekarzy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementacja algorytmu przydziału wizyt do lekarzy" />
+    <MESSAGE value="Utworzenie klas do przetwarzania równoległego" />
+    <option name="LAST_COMMIT_MESSAGE" value="Utworzenie klas do przetwarzania równoległego" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

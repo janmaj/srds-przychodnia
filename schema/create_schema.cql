@@ -33,3 +33,9 @@ CREATE TABLE Doctors (
     end_hours text,               
     PRIMARY KEY (specialty, doctor_id) 
 );
+
+CREATE TABLE AppointmentOwnership (
+    appointment_id int,
+    scheduler_id int,
+    PRIMARY KEY (appointment_id)
+);

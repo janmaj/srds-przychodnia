@@ -34,7 +34,7 @@ public class AppointmentGeneratorThread extends Thread {
 
             try {
                 clinicBackend.addAppointment(specialty, priority, generateUUID(), "Jane", "Doe", new Date());
-                Thread.sleep(2500);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 logger.error("Interruption error when generating appointments: " + e.getMessage());
             } catch (BackendException e) {
