@@ -2,17 +2,17 @@ package cassdemo.scheduling;
 
 import cassdemo.backend.BackendException;
 import cassdemo.backend.ClinicBackend;
+import cassdemo.entities.Appointment;
+import cassdemo.entities.AppointmentOwnership;
+import cassdemo.entities.Doctor;
 import cassdemo.entities.DoctorAppointment;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import static cassdemo.util.Util.generateUUID;
 
@@ -45,32 +45,32 @@ public class AppointmentSchedulerThread extends Thread {
     }
 
     private void scheduleForSpecialty(String specialty) throws BackendException, InterruptedException {
-        ResultSet pendingAppointments = clinicBackend.selectPendingAppointments(specialty);
+        List<Appointment> pendingAppointments = clinicBackend.selectPendingAppointments(specialty);
         boolean schedulingWasSuccessful = false;
 
-        while (!pendingAppointments.isExhausted() && !schedulingWasSuccessful) {
-            Row appointmentRow = pendingAppointments.one();
-            int appointmentId = appointmentRow.getInt("appointment_id");
-            int priority = appointmentRow.getInt("priority");
-            Date timestamp = appointmentRow.getTimestamp("timestamp");
-            logger.info("Now processing appointment with id " + appointmentId + ", specialty " + specialty);
-            logger.info("Trying to check for ownership of appointment " + appointmentId);
-            Row appointmentOwnership = clinicBackend.selectOwnership(appointmentId);
-            if (appointmentOwnership != null && appointmentOwnership.getInt("scheduler_id") != this.id) {
-                logger.info("Appointment already owned by scheduler " + appointmentOwnership.getInt("scheduler_id") + " My own id is " + this.id);
+        Iterator<Appointment> it = pendingAppointments.iterator();
+        while (it.hasNext() && !schedulingWasSuccessful) {
+            Appointment processedAppointment = it.next();
+            logger.info("Now processing appointment with id " + processedAppointment.appointmentId + ", specialty " + specialty);
+            logger.info("Checking ownership for appointment " + processedAppointment.appointmentId);
+            AppointmentOwnership appointmentOwnership = clinicBackend.selectOwnership(processedAppointment.appointmentId);
+            if (appointmentOwnership != null && appointmentOwnership.schedulerId != this.id) {
+                logger.info("Appointment already owned by scheduler " + appointmentOwnership.schedulerId + ". Backing off...");
                 continue;
             }
-            clinicBackend.claimAppointmentOwnership(appointmentId, this.id);
+            clinicBackend.claimAppointmentOwnership(processedAppointment.appointmentId, this.id);
             Thread.sleep(100);
-            appointmentOwnership = clinicBackend.selectOwnership(appointmentId);
-            if (appointmentOwnership != null && appointmentOwnership.getInt("scheduler_id") != this.id) {
-                logger.info("Appointment already owned by scheduler " + appointmentOwnership.getInt("scheduler_id"));
+            appointmentOwnership = clinicBackend.selectOwnership(processedAppointment.appointmentId);
+            if (appointmentOwnership != null && appointmentOwnership.schedulerId != this.id) {
+                logger.info("Appointment already owned by scheduler " + appointmentOwnership.schedulerId + ". Backing off...");
                 continue;
             }
+            logger.info("Succesfully claimed ownership of " + processedAppointment.appointmentId + ". Now trying to schedule");
 
-            findAvailableDoctor(specialty, appointmentId, priority);
-            clinicBackend.deleteAppointment(specialty, priority, timestamp, appointmentId);
-            clinicBackend.deleteOwnership(appointmentId);
+            findAvailableDoctor(specialty, processedAppointment.appointmentId, processedAppointment.priority);
+            clinicBackend.deleteAppointment(processedAppointment);
+            clinicBackend.deleteOwnership(processedAppointment.appointmentId);
+            logger.info("Succesfully scheduled appointment " + processedAppointment.appointmentId);
             schedulingWasSuccessful = true;
         }
 
@@ -80,60 +80,50 @@ public class AppointmentSchedulerThread extends Thread {
         LocalDateTime bestAvailableSlot = null;
         int bestDoctorId = -1;
 
-        ResultSet doctors = clinicBackend.getDoctorsBySpecialty(specialty);
+        List<Doctor> doctors = clinicBackend.getDoctorsBySpecialty(specialty);
         boolean appointmentInsertionSuccessfull = false;
         boolean evictionPossible = false;
         while (!appointmentInsertionSuccessfull) {
-            for (Row doc : doctors) {
-                int doctorId = doc.getInt("doctor_id");
-                LocalTime startHours = Time.valueOf(doc.getString("start_hours")).toLocalTime();
-                LocalTime endHours = Time.valueOf(doc.getString("end_hours")).toLocalTime();
-                LocalDateTime firstAvailableSlot = LocalDate.now().plusDays(1).atTime(startHours);
+            for (Doctor doc : doctors) {
+                LocalDateTime firstAvailableSlot = LocalDate.now().plusDays(1).atTime(doc.startHours);
 
-                Row result = clinicBackend.selectLatestDoctorAppointment(doctorId);
+                DoctorAppointment latestAppointment = clinicBackend.selectLatestDoctorAppointment(doc.doctorId);
                 boolean localEvictionPossible = false;
-                if (result != null) {
-                    com.datastax.driver.core.LocalDate slotDate = result.getDate("appointment_date");
-                    LocalDate slotLocalDate = LocalDate.of(slotDate.getYear(), slotDate.getMonth(), slotDate.getDay());
-                    Time slotTime = new Time(result.getTime("time_slot") / 1000000);
-                    LocalTime slotLocalTime = slotTime.toLocalTime();
-                    if (slotLocalTime.plusHours(2).isAfter(endHours)) {
-                        firstAvailableSlot = slotLocalDate.plusDays(1).atTime(startHours);
+                if (latestAppointment != null) {
+                    if (latestAppointment.timeSlot.plusHours(1).isAfter(doc.endHours)) {
+                        firstAvailableSlot = latestAppointment.appointmentDate.plusDays(1).atTime(doc.startHours);
                     } else {
-                        firstAvailableSlot = slotLocalDate.atTime(slotLocalTime.plusMinutes(30));
+                        firstAvailableSlot = latestAppointment.appointmentDate.atTime(latestAppointment.timeSlot.plusMinutes(30));
                         localEvictionPossible = true;
                     }
                 }
 
                 if (bestAvailableSlot == null || bestAvailableSlot.isAfter(firstAvailableSlot)) {
                     bestAvailableSlot = firstAvailableSlot;
-                    bestDoctorId = doctorId;
+                    bestDoctorId = doc.doctorId;
                     evictionPossible = localEvictionPossible;
                 }
             }
             DoctorAppointment evictionCandidate = null;
             if (evictionPossible && priority < 3) {
-                ResultSet existingDoctorAppointments = clinicBackend.getDoctorDaySchedule(bestDoctorId, bestAvailableSlot.toLocalDate());
-                for (Row existingDoctorAppointment : existingDoctorAppointments) {
-                    int existingAppointmentPriority = existingDoctorAppointment.getInt("priority");
-                    if (existingAppointmentPriority < priority) {
-                        Time slotTime = new Time(existingDoctorAppointment.getTime("time_slot") / 1000000);
-                        LocalTime slotLocalTime = slotTime.toLocalTime();
-                        com.datastax.driver.core.LocalDate slotDate = existingDoctorAppointment.getDate("appointment_date");
-                        LocalDate slotLocalDate = LocalDate.of(slotDate.getYear(), slotDate.getMonth(), slotDate.getDay());
-                        int existingAppointmentId = existingDoctorAppointment.getInt("appointment_id");
-                        evictionCandidate = new DoctorAppointment(bestDoctorId, slotLocalDate, slotLocalTime, existingAppointmentId, existingAppointmentPriority);
+                logger.info("Eviction posible. Looking for an appointment to evict");
+                List<DoctorAppointment> existingDoctorAppointments = clinicBackend.getDoctorDaySchedule(bestDoctorId, bestAvailableSlot.toLocalDate());
+                for (DoctorAppointment existingDoctorAppointment : existingDoctorAppointments) {
+                    if (existingDoctorAppointment.priority > priority) {
+                        evictionCandidate = existingDoctorAppointment;
+                        logger.info("Found eviction candidate " + evictionCandidate.appointmentId);
                         break;
                     }
                 }
                 if (evictionCandidate == null) {
                     evictionPossible = false;
                 } else {
+                    logger.info("Trying to evict appointment " + evictionCandidate.appointmentId + " and replace it by " + appointmentId);
                     clinicBackend.scheduleDoctorAppointment(bestDoctorId, evictionCandidate.appointmentId, bestAvailableSlot, evictionCandidate.priority);
                     Thread.sleep(100);
-                    Row slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
-                    if (slotContent.getInt("appointment_id") != appointmentId) {
-                        logger.info("Failed to evict and insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.getInt("appointment_id") + " is already there");
+                    DoctorAppointment slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
+                    if (slotContent.appointmentId != evictionCandidate.appointmentId) {
+                        logger.info("Failed to evict and insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.appointmentId + " is already there");
                     } else {
                         clinicBackend.updateDoctorAppointment(bestDoctorId, evictionCandidate.appointmentDate, evictionCandidate.timeSlot, appointmentId, priority);
                         logger.info("DoctorAppointment " + evictionCandidate.appointmentId + " evicted and re-scheduled for " + bestAvailableSlot);
@@ -141,12 +131,13 @@ public class AppointmentSchedulerThread extends Thread {
                     }
                 }
             }
-            if (!evictionPossible) {
+            if (!evictionPossible || priority == 3) {
+                logger.info("Eviction not possible. Using traditional insert...");
                 clinicBackend.scheduleDoctorAppointment(bestDoctorId, appointmentId, bestAvailableSlot, priority);
                 Thread.sleep(100);
-                Row slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
-                if (slotContent.getInt("appointment_id") != appointmentId) {
-                    logger.info("Failed to insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.getInt("appointment_id") + " is already there");
+                DoctorAppointment slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
+                if (slotContent.appointmentId != appointmentId) {
+                    logger.info("Failed to insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.appointmentId + " is already there");
                 } else {
                     appointmentInsertionSuccessfull = true;
                 }

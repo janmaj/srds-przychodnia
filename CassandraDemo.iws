@@ -7,11 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Generowanie losowych imion i nazwisk pacjentów">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/entities/DoctorAppointment.java" afterDir="false" />
+    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/entities/Appointment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/entities/AppointmentOwnership.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/entities/Doctor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/create_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/create_schema.cql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
     </list>
@@ -87,7 +88,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="troche_rozszerzone" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -127,18 +128,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.srds-przychodnia [:cassdemo.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;troche__rozszerzone&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jan/Studia/SRDS/srds-przychodnia&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.srds-przychodnia [:cassdemo.Main.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "eviction",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/jan/Studia/SRDS/srds-przychodnia",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
@@ -246,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734454021403</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)">
+      <option name="closed" value="true" />
+      <created>1734466383492</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734466383492</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -257,7 +267,8 @@
     <MESSAGE value="Utworzenie klas do przetwarzania równoległego" />
     <MESSAGE value="Implementacja unikania konfliktów na ile to możliwe" />
     <MESSAGE value="Generowanie losowych imion i nazwisk pacjentów" />
-    <option name="LAST_COMMIT_MESSAGE" value="Generowanie losowych imion i nazwisk pacjentów" />
+    <MESSAGE value="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
