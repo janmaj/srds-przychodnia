@@ -2,6 +2,7 @@ package cassdemo.scheduling;
 
 import cassdemo.backend.BackendException;
 import cassdemo.backend.ClinicBackend;
+import cassdemo.entities.DoctorAppointment;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import org.slf4j.Logger;
@@ -45,8 +46,9 @@ public class AppointmentSchedulerThread extends Thread {
 
     private void scheduleForSpecialty(String specialty) throws BackendException, InterruptedException {
         ResultSet pendingAppointments = clinicBackend.selectPendingAppointments(specialty);
+        boolean schedulingWasSuccessful = false;
 
-        while (!pendingAppointments.isExhausted()) {
+        while (!pendingAppointments.isExhausted() && !schedulingWasSuccessful) {
             Row appointmentRow = pendingAppointments.one();
             int appointmentId = appointmentRow.getInt("appointment_id");
             int priority = appointmentRow.getInt("priority");
@@ -66,28 +68,30 @@ public class AppointmentSchedulerThread extends Thread {
                 continue;
             }
 
-            findAvailableDoctor(specialty, appointmentId);
+            findAvailableDoctor(specialty, appointmentId, priority);
             clinicBackend.deleteAppointment(specialty, priority, timestamp, appointmentId);
             clinicBackend.deleteOwnership(appointmentId);
+            schedulingWasSuccessful = true;
         }
 
     }
 
-    private void findAvailableDoctor(String specialty, int appointmentId) throws BackendException, InterruptedException {
+    private void findAvailableDoctor(String specialty, int appointmentId, int priority) throws BackendException, InterruptedException {
         LocalDateTime bestAvailableSlot = null;
         int bestDoctorId = -1;
 
-        ResultSet rs = clinicBackend.getDoctorsBySpecialty(specialty);
+        ResultSet doctors = clinicBackend.getDoctorsBySpecialty(specialty);
         boolean appointmentInsertionSuccessfull = false;
+        boolean evictionPossible = false;
         while (!appointmentInsertionSuccessfull) {
-            for (Row doc : rs) {
+            for (Row doc : doctors) {
                 int doctorId = doc.getInt("doctor_id");
                 LocalTime startHours = Time.valueOf(doc.getString("start_hours")).toLocalTime();
                 LocalTime endHours = Time.valueOf(doc.getString("end_hours")).toLocalTime();
                 LocalDateTime firstAvailableSlot = LocalDate.now().plusDays(1).atTime(startHours);
 
                 Row result = clinicBackend.selectLatestDoctorAppointment(doctorId);
-
+                boolean localEvictionPossible = false;
                 if (result != null) {
                     com.datastax.driver.core.LocalDate slotDate = result.getDate("appointment_date");
                     LocalDate slotLocalDate = LocalDate.of(slotDate.getYear(), slotDate.getMonth(), slotDate.getDay());
@@ -97,22 +101,57 @@ public class AppointmentSchedulerThread extends Thread {
                         firstAvailableSlot = slotLocalDate.plusDays(1).atTime(startHours);
                     } else {
                         firstAvailableSlot = slotLocalDate.atTime(slotLocalTime.plusMinutes(30));
+                        localEvictionPossible = true;
                     }
                 }
 
                 if (bestAvailableSlot == null || bestAvailableSlot.isAfter(firstAvailableSlot)) {
                     bestAvailableSlot = firstAvailableSlot;
                     bestDoctorId = doctorId;
+                    evictionPossible = localEvictionPossible;
                 }
             }
-            clinicBackend.scheduleDoctorAppointment(bestDoctorId, appointmentId, bestAvailableSlot);
-            Thread.sleep(100);
-            Row slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
-            if (slotContent.getInt("appointment_id") != appointmentId) {
-                logger.info("Failed to insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.getInt("appointment_id") + " is already there");
-            }else{
-                appointmentInsertionSuccessfull = true;
+            DoctorAppointment evictionCandidate = null;
+            if (evictionPossible && priority < 3) {
+                ResultSet existingDoctorAppointments = clinicBackend.getDoctorDaySchedule(bestDoctorId, bestAvailableSlot.toLocalDate());
+                for (Row existingDoctorAppointment : existingDoctorAppointments) {
+                    int existingAppointmentPriority = existingDoctorAppointment.getInt("priority");
+                    if (existingAppointmentPriority < priority) {
+                        Time slotTime = new Time(existingDoctorAppointment.getTime("time_slot") / 1000000);
+                        LocalTime slotLocalTime = slotTime.toLocalTime();
+                        com.datastax.driver.core.LocalDate slotDate = existingDoctorAppointment.getDate("appointment_date");
+                        LocalDate slotLocalDate = LocalDate.of(slotDate.getYear(), slotDate.getMonth(), slotDate.getDay());
+                        int existingAppointmentId = existingDoctorAppointment.getInt("appointment_id");
+                        evictionCandidate = new DoctorAppointment(bestDoctorId, slotLocalDate, slotLocalTime, existingAppointmentId, existingAppointmentPriority);
+                        break;
+                    }
+                }
+                if (evictionCandidate == null) {
+                    evictionPossible = false;
+                } else {
+                    clinicBackend.scheduleDoctorAppointment(bestDoctorId, evictionCandidate.appointmentId, bestAvailableSlot, evictionCandidate.priority);
+                    Thread.sleep(100);
+                    Row slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
+                    if (slotContent.getInt("appointment_id") != appointmentId) {
+                        logger.info("Failed to evict and insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.getInt("appointment_id") + " is already there");
+                    } else {
+                        clinicBackend.updateDoctorAppointment(bestDoctorId, evictionCandidate.appointmentDate, evictionCandidate.timeSlot, appointmentId, priority);
+                        logger.info("DoctorAppointment " + evictionCandidate.appointmentId + " evicted and re-scheduled for " + bestAvailableSlot);
+                        appointmentInsertionSuccessfull = true;
+                    }
+                }
             }
+            if (!evictionPossible) {
+                clinicBackend.scheduleDoctorAppointment(bestDoctorId, appointmentId, bestAvailableSlot, priority);
+                Thread.sleep(100);
+                Row slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
+                if (slotContent.getInt("appointment_id") != appointmentId) {
+                    logger.info("Failed to insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.getInt("appointment_id") + " is already there");
+                } else {
+                    appointmentInsertionSuccessfull = true;
+                }
+            }
+
         }
     }
 }

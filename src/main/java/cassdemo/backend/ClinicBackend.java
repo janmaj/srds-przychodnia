@@ -1,6 +1,7 @@
 package cassdemo.backend;
 
 import com.datastax.driver.core.*;
+import org.apache.cassandra.cql3.statements.Bound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +16,9 @@ public class ClinicBackend {
 
     private static PreparedStatement INSERT_APPOINTMENT;
     private static PreparedStatement INSERT_DOCTOR_APPOINTMENT;
+    private static PreparedStatement UPDATE_DOCTOR_APPOINTMENT;
     private static PreparedStatement SELECT_NEXT_APPOINTMENT;
+    private static PreparedStatement SELECT_DOCTOR_APPOINTMENTS;
     private static PreparedStatement SELECT_PENDING_APPOINTMENTS;
     private static PreparedStatement SELECT_DOCTOR_BY_SPECIALTY;
     private static PreparedStatement INSERT_DOCTOR;
@@ -42,7 +45,7 @@ public class ClinicBackend {
         try {
             INSERT_APPOINTMENT = session.prepare("INSERT INTO Appointments (specialty, priority, appointment_id, patient_first_name, patient_last_name, timestamp) " + "VALUES (?, ?, ?, ?, ?, ?);");
 
-            INSERT_DOCTOR_APPOINTMENT = session.prepare("INSERT INTO DoctorAppointments (doctor_id, appointment_date, time_slot, appointment_id) " + "VALUES (?, ?, ?, ?);");
+            INSERT_DOCTOR_APPOINTMENT = session.prepare("INSERT INTO DoctorAppointments (doctor_id, appointment_date, time_slot, appointment_id, priority) " + "VALUES (?, ?, ?, ?, ?);");
 
             SELECT_NEXT_APPOINTMENT = session.prepare("SELECT * FROM Appointments WHERE specialty = ? ORDER BY priority DESC, timestamp ASC LIMIT 1;");
 
@@ -53,6 +56,10 @@ public class ClinicBackend {
             INSERT_DOCTOR = session.prepare("INSERT INTO Doctors (doctor_id, name, specialty, start_hours, end_hours) " + "VALUES (?, ?, ?, ?, ?);");
 
             SELECT_LATEST_DOCTOR_APPOINTMENT = session.prepare("SELECT * FROM DoctorAppointments WHERE doctor_id = ? ORDER BY appointment_date DESC, time_slot DESC LIMIT 1;");
+
+            SELECT_DOCTOR_APPOINTMENTS = session.prepare("SELECT * FROM DoctorAppointments WHERE doctor_id = ? AND appointment_date = ? ORDER BY time_slot ASC;");
+
+            UPDATE_DOCTOR_APPOINTMENT = session.prepare("UPDATE DoctorAppointments SET appointment_id = ?, priority = ? WHERE doctor_id = ? AND appointment_date = ? AND time_slot = ?;");
 
             UPSERT_OWNERSHIP = session.prepare("INSERT INTO AppointmentOwnership (appointment_id, scheduler_id) VALUES (?, ?);");
 
@@ -156,10 +163,10 @@ public class ClinicBackend {
         return rs.one();
     }
 
-    public void scheduleDoctorAppointment(int doctorId, int appointmentId, LocalDateTime timestamp) throws BackendException {
+    public void scheduleDoctorAppointment(int doctorId, int appointmentId, LocalDateTime timestamp, int priority) throws BackendException {
         BoundStatement bs = new BoundStatement(INSERT_DOCTOR_APPOINTMENT);
         com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(timestamp.getYear(), timestamp.getMonthValue(), timestamp.getDayOfMonth());
-        bs.bind(doctorId, cassandraDate, timestamp.toLocalTime().toNanoOfDay(), appointmentId);
+        bs.bind(doctorId, cassandraDate, timestamp.toLocalTime().toNanoOfDay(), appointmentId, priority);
 
         try {
             session.execute(bs);
@@ -167,6 +174,20 @@ public class ClinicBackend {
         } catch (Exception e) {
             throw new BackendException("Could not schedule doctor appointment. " + e.getMessage(), e);
         }
+    }
+
+    public ResultSet getDoctorDaySchedule(int doctorId, LocalDate appointmentDate) {
+        BoundStatement bs = new BoundStatement(SELECT_DOCTOR_APPOINTMENTS);
+        com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(appointmentDate.getYear(), appointmentDate.getMonthValue(), appointmentDate.getDayOfMonth());
+        bs.bind(doctorId, cassandraDate);
+        return session.execute(bs);
+    }
+
+    public void updateDoctorAppointment(int doctorId, LocalDate appointmentDate, LocalTime timeSlot, int appointmentId, int priority) {
+        BoundStatement bs = new BoundStatement(UPDATE_DOCTOR_APPOINTMENT);
+        com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(appointmentDate.getYear(), appointmentDate.getMonthValue(), appointmentDate.getDayOfMonth());
+        bs.bind(appointmentId, priority, doctorId, cassandraDate, timeSlot.toNanoOfDay());
+        session.execute(bs);
     }
 
     public void deleteAppointment(String specialty, int priority, Date timestamp, int appointmentId) throws BackendException {
