@@ -7,13 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Utworzenie klas do przetwarzania równoległego">
+    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Implementacja unikania konfliktów na ile to możliwe">
       <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/create_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/create_schema.cql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734295228737</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implementacja unikania konfliktów na ile to możliwe">
+      <option name="closed" value="true" />
+      <created>1734381362833</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734381362833</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -239,7 +243,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implementacja algorytmu przydziału wizyt do lekarzy" />
     <MESSAGE value="Utworzenie klas do przetwarzania równoległego" />
-    <option name="LAST_COMMIT_MESSAGE" value="Utworzenie klas do przetwarzania równoległego" />
+    <MESSAGE value="Implementacja unikania konfliktów na ile to możliwe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementacja unikania konfliktów na ile to możliwe" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

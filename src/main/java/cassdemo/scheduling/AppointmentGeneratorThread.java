@@ -14,6 +14,10 @@ import static cassdemo.util.Util.generateUUID;
 public class AppointmentGeneratorThread extends Thread {
     private final ClinicBackend clinicBackend;
     private static final Logger logger = LoggerFactory.getLogger(ClinicBackend.class);
+    private static final String[] firstNames = {"James", "John", "Robert", "Michael", "William", "David", "Joseph",
+            "Charles", "Thomas", "Daniel", "Mary", "Jennifer", "Linda", "Patricia", "Elizabeth", "Susan", "Jessica",
+            "Sarah", "Karen", "Nancy"};
+    private static final String[] lastNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"};
 
     public AppointmentGeneratorThread(ClinicBackend clinicBackend) {
         this.clinicBackend = clinicBackend;
@@ -32,8 +36,13 @@ public class AppointmentGeneratorThread extends Thread {
                 priority = 3;
             }
 
+            int firstNameIndex = ThreadLocalRandom.current().nextInt(firstNames.length);
+            int lastNameIndex = ThreadLocalRandom.current().nextInt(lastNames.length);
+            String patientFirstName = firstNames[firstNameIndex];
+            String patientLastName = lastNames[lastNameIndex];
+
             try {
-                clinicBackend.addAppointment(specialty, priority, generateUUID(), "Jane", "Doe", new Date());
+                clinicBackend.addAppointment(specialty, priority, generateUUID(), patientFirstName, patientLastName, new Date());
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 logger.error("Interruption error when generating appointments: " + e.getMessage());
