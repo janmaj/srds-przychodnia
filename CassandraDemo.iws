@@ -7,13 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/entities/Appointment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/entities/AppointmentOwnership.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cassdemo/entities/Doctor.java" afterDir="false" />
+    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Stworzenie pakietu entity, naprawienie błędów">
+      <change beforePath="$PROJECT_DIR$/CassandraDemo.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IdeaProjects.srds-przychodnia.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/scripts/srds-przychodnia" beforeDir="false" afterPath="$PROJECT_DIR$/bin/scripts/srds-przychodnia" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/scripts/srds-przychodnia.bat" beforeDir="false" afterPath="$PROJECT_DIR$/bin/scripts/srds-przychodnia.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,9 +74,27 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="srds-przychodnia" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="srds-przychodnia" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="srds-przychodnia" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -109,6 +132,9 @@
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -138,7 +164,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/jan/Studia/SRDS/srds-przychodnia",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
   <component name="RunManager">
@@ -256,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734466383492</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Stworzenie pakietu entity, naprawienie błędów">
+      <option name="closed" value="true" />
+      <created>1734473490411</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1734473490411</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -268,7 +302,8 @@
     <MESSAGE value="Implementacja unikania konfliktów na ile to możliwe" />
     <MESSAGE value="Generowanie losowych imion i nazwisk pacjentów" />
     <MESSAGE value="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)" />
+    <MESSAGE value="Stworzenie pakietu entity, naprawienie błędów" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stworzenie pakietu entity, naprawienie błędów" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

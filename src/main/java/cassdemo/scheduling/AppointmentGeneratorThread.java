@@ -13,7 +13,7 @@ import static cassdemo.util.Util.generateUUID;
 
 public class AppointmentGeneratorThread extends Thread {
     private final ClinicBackend clinicBackend;
-    private static final Logger logger = LoggerFactory.getLogger(ClinicBackend.class);
+    private static final Logger logger = LoggerFactory.getLogger(AppointmentGeneratorThread.class);
     private static final String[] firstNames = {"James", "John", "Robert", "Michael", "William", "David", "Joseph",
             "Charles", "Thomas", "Daniel", "Mary", "Jennifer", "Linda", "Patricia", "Elizabeth", "Susan", "Jessica",
             "Sarah", "Karen", "Nancy"};

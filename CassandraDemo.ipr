@@ -245,18 +245,18 @@
     <mapping directory="" vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="Gradle: ch.qos.logback:logback-classic:1.5.12" type="java-imported" external-system-id="GRADLE">
-      <properties groupId="ch.qos.logback" artifactId="logback-classic" version="1.5.12" />
+    <library name="Gradle: ch.qos.logback:logback-classic:1.5.16" type="java-imported" external-system-id="GRADLE">
+      <properties groupId="ch.qos.logback" artifactId="logback-classic" version="1.5.16" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.5.12/3790d1a62e868f7915776dfb392bd9a29ce8d954/logback-classic-1.5.12.jar!/" />
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.5.16/113979db51dfad6dc895b34460d7b7ff64ffe7d2/logback-classic-1.5.16.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>
-    <library name="Gradle: ch.qos.logback:logback-core:1.5.12" type="java-imported" external-system-id="GRADLE">
-      <properties groupId="ch.qos.logback" artifactId="logback-core" version="1.5.12" />
+    <library name="Gradle: ch.qos.logback:logback-core:1.5.16" type="java-imported" external-system-id="GRADLE">
+      <properties groupId="ch.qos.logback" artifactId="logback-core" version="1.5.16" />
       <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.5.12/65b1fa25fe8d8e4bdc140e79eb67ac6741f775e2/logback-core-1.5.12.jar!/" />
+        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.5.16/4f17700f046900aea2fadf115e2d67fec921f7fd/logback-core-1.5.16.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />

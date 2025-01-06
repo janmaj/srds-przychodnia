@@ -21,7 +21,9 @@ public class AppointmentSchedulerThread extends Thread {
     private final ClinicBackend clinicBackend;
     private final String specialty;
     private final int id;
-    private static final Logger logger = LoggerFactory.getLogger(ClinicBackend.class);
+    private static final Logger logger = LoggerFactory.getLogger(AppointmentSchedulerThread.class);
+    private Appointment processedAppointment;
+    private volatile boolean interrupted = false;
 
     public AppointmentSchedulerThread(ClinicBackend clinicBackend, String specialty) {
         this.clinicBackend = clinicBackend;
@@ -33,7 +35,7 @@ public class AppointmentSchedulerThread extends Thread {
     public void run() {
         try {
             logger.info("Starting scheduling for specialty " + specialty + "...");
-            while (true) {
+            while (!interrupted) {
                 scheduleForSpecialty(specialty);
                 Thread.sleep(100);
             }
@@ -41,6 +43,11 @@ public class AppointmentSchedulerThread extends Thread {
             logger.error("Backend error when scheduling for specialty: " + e.getMessage());
         } catch (InterruptedException e) {
             logger.error("Interruption error when scheduling for specialty: " + e.getMessage());
+        }finally {
+            logger.info("Performing cleanup...");
+            if (processedAppointment != null) {
+                clinicBackend.deleteOwnership(processedAppointment.appointmentId);
+            }
         }
     }
 
@@ -50,7 +57,7 @@ public class AppointmentSchedulerThread extends Thread {
 
         Iterator<Appointment> it = pendingAppointments.iterator();
         while (it.hasNext() && !schedulingWasSuccessful) {
-            Appointment processedAppointment = it.next();
+            processedAppointment = it.next();
             logger.info("Now processing appointment with id " + processedAppointment.appointmentId + ", specialty " + specialty);
             logger.info("Checking ownership for appointment " + processedAppointment.appointmentId);
             AppointmentOwnership appointmentOwnership = clinicBackend.selectOwnership(processedAppointment.appointmentId);
@@ -68,9 +75,9 @@ public class AppointmentSchedulerThread extends Thread {
             logger.info("Succesfully claimed ownership of " + processedAppointment.appointmentId + ". Now trying to schedule");
 
             findAvailableDoctor(specialty, processedAppointment.appointmentId, processedAppointment.priority);
+            logger.info("Succesfully scheduled appointment " + processedAppointment.appointmentId);
             clinicBackend.deleteAppointment(processedAppointment);
             clinicBackend.deleteOwnership(processedAppointment.appointmentId);
-            logger.info("Succesfully scheduled appointment " + processedAppointment.appointmentId);
             schedulingWasSuccessful = true;
         }
 
@@ -144,5 +151,9 @@ public class AppointmentSchedulerThread extends Thread {
             }
 
         }
+    }
+
+    public void stopScheduling(){
+        this.interrupted = true;
     }
 }
