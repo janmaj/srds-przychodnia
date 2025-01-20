@@ -1,7 +1,5 @@
 package cassdemo.entities;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Date;
 
 public class Appointment {

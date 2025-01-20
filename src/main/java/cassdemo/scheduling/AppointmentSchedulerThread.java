@@ -18,10 +18,10 @@ import static cassdemo.util.Util.generateUUID;
 
 public class AppointmentSchedulerThread extends Thread {
 
+    private static final Logger logger = LoggerFactory.getLogger(AppointmentSchedulerThread.class);
     private final ClinicBackend clinicBackend;
     private final String specialty;
     private final int id;
-    private static final Logger logger = LoggerFactory.getLogger(AppointmentSchedulerThread.class);
     private Appointment processedAppointment;
     private volatile boolean interrupted = false;
 
@@ -43,7 +43,7 @@ public class AppointmentSchedulerThread extends Thread {
             logger.error("Backend error when scheduling for specialty: " + e.getMessage());
         } catch (InterruptedException e) {
             logger.error("Interruption error when scheduling for specialty: " + e.getMessage());
-        }finally {
+        } finally {
             logger.info("Performing cleanup...");
             if (processedAppointment != null) {
                 clinicBackend.deleteOwnership(processedAppointment.appointmentId);
@@ -72,10 +72,10 @@ public class AppointmentSchedulerThread extends Thread {
                 logger.info("Appointment already owned by scheduler " + appointmentOwnership.schedulerId + ". Backing off...");
                 continue;
             }
-            logger.info("Succesfully claimed ownership of " + processedAppointment.appointmentId + ". Now trying to schedule");
+            logger.info("Successfully claimed ownership of " + processedAppointment.appointmentId + ". Now trying to schedule");
 
             findAvailableDoctor(specialty, processedAppointment.appointmentId, processedAppointment.priority);
-            logger.info("Succesfully scheduled appointment " + processedAppointment.appointmentId);
+            logger.info("Successfully scheduled appointment " + processedAppointment.appointmentId);
             clinicBackend.deleteAppointment(processedAppointment);
             clinicBackend.deleteOwnership(processedAppointment.appointmentId);
             schedulingWasSuccessful = true;
@@ -113,7 +113,7 @@ public class AppointmentSchedulerThread extends Thread {
             }
             DoctorAppointment evictionCandidate = null;
             if (evictionPossible && priority < 3) {
-                logger.info("Eviction posible. Looking for an appointment to evict");
+                logger.info("Eviction possible. Looking for an appointment to evict");
                 List<DoctorAppointment> existingDoctorAppointments = clinicBackend.getDoctorDaySchedule(bestDoctorId, bestAvailableSlot.toLocalDate());
                 for (DoctorAppointment existingDoctorAppointment : existingDoctorAppointments) {
                     if (existingDoctorAppointment.priority > priority) {
@@ -153,7 +153,7 @@ public class AppointmentSchedulerThread extends Thread {
         }
     }
 
-    public void stopScheduling(){
+    public void stopScheduling() {
         this.interrupted = true;
     }
 }

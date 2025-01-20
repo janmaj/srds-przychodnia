@@ -15,7 +15,7 @@
       <pattern>%-4r %-5level %logger{35}: %msg%n</pattern>
     </encoder>
   </appender>        
-  <root level="INFO">
+  <root level="${LOG_LEVEL}">
       <appender-ref ref="FILE" />
       <appender-ref ref="STDOUT" />
   </root> 

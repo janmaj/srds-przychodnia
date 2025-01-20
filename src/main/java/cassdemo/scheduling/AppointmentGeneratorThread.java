@@ -12,12 +12,12 @@ import static cassdemo.Main.specialties;
 import static cassdemo.util.Util.generateUUID;
 
 public class AppointmentGeneratorThread extends Thread {
-    private final ClinicBackend clinicBackend;
     private static final Logger logger = LoggerFactory.getLogger(AppointmentGeneratorThread.class);
     private static final String[] firstNames = {"James", "John", "Robert", "Michael", "William", "David", "Joseph",
             "Charles", "Thomas", "Daniel", "Mary", "Jennifer", "Linda", "Patricia", "Elizabeth", "Susan", "Jessica",
             "Sarah", "Karen", "Nancy"};
     private static final String[] lastNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"};
+    private final ClinicBackend clinicBackend;
 
     public AppointmentGeneratorThread(ClinicBackend clinicBackend) {
         this.clinicBackend = clinicBackend;

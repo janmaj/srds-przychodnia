@@ -15,6 +15,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ClinicBackend {
 
@@ -35,15 +36,21 @@ public class ClinicBackend {
     private static PreparedStatement DELETE_OWNERSHIP;
     private final Session session;
 
+    private final AtomicInteger readCount;
+    private final AtomicInteger writeCount;
+
     // Constructor
-    public ClinicBackend(String contactPoint, String keyspace) throws BackendException {
+    public ClinicBackend(String contactPoint, String keyspace, AtomicInteger readCount, AtomicInteger writeCount) throws BackendException {
         Cluster cluster = Cluster.builder().addContactPoint(contactPoint).build();
         try {
             session = cluster.connect(keyspace);
+
         } catch (Exception e) {
             throw new BackendException("Could not connect to the cluster. " + e.getMessage(), e);
         }
         prepareStatements();
+        this.readCount = readCount;
+        this.writeCount = writeCount;
     }
 
     private void prepareStatements() throws BackendException {
@@ -86,6 +93,7 @@ public class ClinicBackend {
         try {
             session.execute(bs);
             logger.info("Doctor added: " + name + " (" + specialty + ")");
+            writeCount.getAndIncrement();
         } catch (Exception e) {
             throw new BackendException("Could not add doctor. " + e.getMessage(), e);
         }
@@ -98,6 +106,7 @@ public class ClinicBackend {
         try {
             session.execute(bs);
             logger.info("Appointment added for " + patientFirstName + " " + patientLastName);
+            writeCount.getAndIncrement();
         } catch (Exception e) {
             throw new BackendException("Could not add appointment. " + e.getMessage(), e);
         }
@@ -107,6 +116,7 @@ public class ClinicBackend {
         BoundStatement bs = new BoundStatement(SELECT_PENDING_APPOINTMENTS);
         bs.bind(specialty);
         ResultSet rs = session.execute(bs);
+        readCount.getAndIncrement();
         List<Appointment> appointments = new ArrayList<>();
         for (Row row : rs) {
             int priority = row.getInt("priority");
@@ -124,12 +134,14 @@ public class ClinicBackend {
         BoundStatement bs = new BoundStatement(UPSERT_OWNERSHIP);
         bs.bind(appointmentId, schedulerId);
         session.execute(bs);
+        writeCount.getAndIncrement();
     }
 
     public AppointmentOwnership selectOwnership(int appointmentId) {
         BoundStatement bs = new BoundStatement(SELECT_OWNERSHIP);
         bs.bind(appointmentId);
         ResultSet rs = session.execute(bs);
+        readCount.getAndIncrement();
         if (rs.isExhausted()) return null;
         Row row = rs.one();
         int schedulerId = row.getInt("scheduler_id");
@@ -140,12 +152,14 @@ public class ClinicBackend {
         BoundStatement bs = new BoundStatement(DELETE_OWNERSHIP);
         bs.bind(appointmentId);
         session.execute(bs);
+        writeCount.getAndIncrement();
     }
 
     public DoctorAppointment selectLatestDoctorAppointment(int doctorId) {
         BoundStatement selectLatest = new BoundStatement(SELECT_LATEST_DOCTOR_APPOINTMENT);
         selectLatest.bind(doctorId);
         ResultSet rs = session.execute(selectLatest);
+        readCount.getAndIncrement();
         if (rs.isExhausted()) {
             return null;
         }
@@ -165,6 +179,7 @@ public class ClinicBackend {
         selectDoctor.bind(specialty);
         List<Doctor> doctors = new ArrayList<>();
         ResultSet rs = session.execute(selectDoctor);
+        readCount.getAndIncrement();
         for (Row row : rs) {
             int doctorId = row.getInt("doctor_id");
             LocalTime startHours = Time.valueOf(row.getString("start_hours")).toLocalTime();
@@ -180,6 +195,7 @@ public class ClinicBackend {
         com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(appointmentDate.getYear(), appointmentDate.getMonthValue(), appointmentDate.getDayOfMonth());
         bs.bind(doctorId, cassandraDate, timeSlot.toNanoOfDay());
         ResultSet rs = session.execute(bs);
+        readCount.getAndIncrement();
         if (rs.isExhausted()) return null;
         Row row = rs.one();
         int appointmentId = row.getInt("appointment_id");
@@ -194,6 +210,7 @@ public class ClinicBackend {
 
         try {
             session.execute(bs);
+            writeCount.getAndIncrement();
             logger.info("Doctor appointment for doctor " + doctorId + " scheduled on " + timestamp);
         } catch (Exception e) {
             throw new BackendException("Could not schedule doctor appointment. " + e.getMessage(), e);
@@ -205,6 +222,7 @@ public class ClinicBackend {
         com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(appointmentDate.getYear(), appointmentDate.getMonthValue(), appointmentDate.getDayOfMonth());
         bs.bind(doctorId, cassandraDate);
         ResultSet rs = session.execute(bs);
+        readCount.getAndIncrement();
         List<DoctorAppointment> appointments = new ArrayList<>();
         for (Row row : rs) {
             int appointmentId = row.getInt("appointment_id");
@@ -221,6 +239,7 @@ public class ClinicBackend {
         com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(appointmentDate.getYear(), appointmentDate.getMonthValue(), appointmentDate.getDayOfMonth());
         bs.bind(appointmentId, priority, doctorId, cassandraDate, timeSlot.toNanoOfDay());
         session.execute(bs);
+        writeCount.getAndIncrement();
     }
 
     public void deleteAppointment(Appointment a) throws BackendException {
@@ -229,6 +248,7 @@ public class ClinicBackend {
 
         try {
             session.execute(bs);
+            writeCount.getAndIncrement();
         } catch (Exception e) {
             throw new BackendException("Could not delete appointment. " + e.getMessage(), e);
         }
