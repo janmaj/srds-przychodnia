@@ -1,4 +1,7 @@
-810  WARN  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, but epoll is not available. Using NIO instead.
+423  INFO  c.d.driver.core.GuavaCompatibility: Detected Guava >= 19 in the classpath, using modern compatibility layer
+685  INFO  c.datastax.driver.core.ClockFactory: Using native clock to generate timestamps.
+819  INFO  i.n.util.internal.PlatformDependent: Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+828  WARN  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, but epoll is not available. Using NIO instead.
 java.lang.NoClassDefFoundError: Could not initialize class io.netty.util.internal.PlatformDependent0
 	at io.netty.util.internal.PlatformDependent.getClassLoader(PlatformDependent.java:624)
 	at io.netty.channel.epoll.Native.loadNativeLibrary(Native.java:269)
@@ -32,9 +35,282 @@ Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.reflect.In
 	at io.netty.util.concurrent.GlobalEventExecutor.<clinit>(GlobalEventExecutor.java:41)
 	at com.datastax.driver.core.Connection$Factory.<init>(Connection.java:752)
 	... 6 common frames omitted
-3634 WARN  cassdemo.Main: Reads/second: 47.0
-3634 WARN  cassdemo.Main: Writes/second: 29.0
-5635 WARN  cassdemo.Main: Reads/second: 42.0
-5636 WARN  cassdemo.Main: Writes/second: 24.0
-7637 WARN  cassdemo.Main: Reads/second: 48.0
-7638 WARN  cassdemo.Main: Writes/second: 32.5
+1357 INFO  c.d.d.c.p.DCAwareRoundRobinPolicy: Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+1360 INFO  com.datastax.driver.core.Cluster: New Cassandra host /127.0.0.1:9042 added
+1360 INFO  com.datastax.driver.core.Cluster: New Cassandra host /172.19.0.4:9042 added
+1360 INFO  com.datastax.driver.core.Cluster: New Cassandra host /172.19.0.3:9042 added
+1523 INFO  c.s.AppointmentSchedulerThread: Starting scheduling for specialty cardiology...
+1524 INFO  c.s.AppointmentSchedulerThread: Starting scheduling for specialty orthopedics...
+1524 INFO  c.s.AppointmentSchedulerThread: Starting scheduling for specialty general...
+1535 INFO  cassdemo.backend.ClinicBackend: Appointment added for Maria Johnson
+1542 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1280353193, specialty orthopedics
+1542 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1280353193
+1542 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1467206300, specialty general
+1543 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1467206300
+1546 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1569470230, specialty cardiology
+1546 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1569470230
+1663 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1280353193. Now trying to schedule
+1663 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1467206300. Now trying to schedule
+1663 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1569470230. Now trying to schedule
+1688 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+1690 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+1691 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+1749 INFO  cassdemo.backend.ClinicBackend: Appointment added for Matthew Thomas
+1858 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T12:00
+1858 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T09:00
+1859 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T11:00
+1953 INFO  cassdemo.backend.ClinicBackend: Appointment added for Brian Johnson
+1964 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1467206300
+1965 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1569470230
+1965 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1280353193
+2081 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 161884442, specialty orthopedics
+2082 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1775158415, specialty general
+2082 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 161884442
+2082 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1775158415
+2087 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1631001471, specialty cardiology
+2089 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1631001471
+2157 INFO  cassdemo.backend.ClinicBackend: Appointment added for David Perez
+2196 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1775158415. Now trying to schedule
+2198 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 161884442. Now trying to schedule
+2202 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1631001471. Now trying to schedule
+2207 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+2211 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+2213 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+2217 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T11:30
+2220 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T09:30
+2221 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+2225 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T12:30
+2325 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 161884442
+2327 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1631001471
+2341 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1775158415
+2365 INFO  cassdemo.backend.ClinicBackend: Appointment added for Mary Brown
+2452 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1719258610, specialty orthopedics
+2453 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1719258610
+2458 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 2092272648, specialty cardiology
+2459 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 2092272648
+2472 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1047268677, specialty general
+2473 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1047268677
+2571 INFO  cassdemo.backend.ClinicBackend: Appointment added for Dorothy Hill
+2576 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1719258610. Now trying to schedule
+2583 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 2092272648. Now trying to schedule
+2594 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+2597 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1047268677. Now trying to schedule
+2605 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+2611 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T12:00
+2620 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T10:00
+2622 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+2631 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+2638 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T13:00
+2717 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1719258610
+2731 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 2092272648
+2750 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1047268677
+2781 INFO  cassdemo.backend.ClinicBackend: Appointment added for Mark Nelson
+2836 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1137874440, specialty orthopedics
+2837 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1137874440
+2857 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1342926382, specialty cardiology
+2858 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1342926382
+2880 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1178990513, specialty general
+2881 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1178990513
+2948 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1137874440. Now trying to schedule
+2957 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+2964 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 1280353193
+2964 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 1280353193 and replace it by 1137874440
+2971 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T12:30
+2978 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1342926382. Now trying to schedule
+2999 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+2998 INFO  cassdemo.backend.ClinicBackend: Appointment added for Emily Young
+3009 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T10:30
+3009 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1178990513. Now trying to schedule
+3021 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+3031 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+3041 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T13:30
+3084 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 1280353193 evicted and re-scheduled for 2025-01-23T12:30
+3085 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1137874440
+3114 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1342926382
+3149 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1178990513
+3207 INFO  cassdemo.backend.ClinicBackend: Appointment added for Sarah Young
+3212 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1676263386, specialty orthopedics
+3212 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1676263386
+3248 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 327235462, specialty cardiology
+3250 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 327235462
+3289 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 686583922, specialty general
+3291 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 686583922
+3351 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1676263386. Now trying to schedule
+3356 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+3360 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T13:00
+3392 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 327235462. Now trying to schedule
+3397 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+3400 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T11:00
+3405 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 686583922. Now trying to schedule
+3412 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+3412 INFO  cassdemo.backend.ClinicBackend: Appointment added for Daniel Hernandez
+3416 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+3421 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T14:00
+3463 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1676263386
+3503 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 327235462
+3526 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 686583922
+3526 WARN  cassdemo.Main: Reads/second: 47.0
+3527 WARN  cassdemo.Main: Writes/second: 34.5
+3574 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 2028066736, specialty orthopedics
+3575 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 2028066736
+3616 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1491596633, specialty cardiology
+3618 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1491596633
+3619 INFO  cassdemo.backend.ClinicBackend: Appointment added for Brian Adams
+3643 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 441987144, specialty general
+3644 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 441987144
+3689 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 2028066736. Now trying to schedule
+3699 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+3705 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 161884442
+3705 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 161884442 and replace it by 2028066736
+3710 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T13:30
+3733 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1491596633. Now trying to schedule
+3744 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+3751 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 1569470230
+3751 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 1569470230 and replace it by 1491596633
+3757 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T11:30
+3758 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 441987144. Now trying to schedule
+3768 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+3775 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+3781 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T14:30
+3820 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 161884442 evicted and re-scheduled for 2025-01-23T13:30
+3821 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 2028066736
+3827 INFO  cassdemo.backend.ClinicBackend: Appointment added for Jennifer Morris
+3868 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 1569470230 evicted and re-scheduled for 2025-01-23T11:30
+3868 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1491596633
+3888 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 441987144
+3939 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1559035179, specialty orthopedics
+3940 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1559035179
+3986 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 855983098, specialty cardiology
+3987 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 855983098
+4006 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1773927751, specialty general
+4007 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1773927751
+4033 INFO  cassdemo.backend.ClinicBackend: Appointment added for Daniel Rivera
+4053 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1559035179. Now trying to schedule
+4060 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+4064 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 1719258610
+4064 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 1719258610 and replace it by 1559035179
+4067 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T14:00
+4097 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 855983098. Now trying to schedule
+4102 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+4106 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 1631001471
+4106 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 1631001471 and replace it by 855983098
+4110 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T12:00
+4119 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1773927751. Now trying to schedule
+4125 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+4129 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+4133 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T15:00
+4176 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 1719258610 evicted and re-scheduled for 2025-01-23T14:00
+4177 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1559035179
+4219 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 1631001471 evicted and re-scheduled for 2025-01-23T12:00
+4219 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 855983098
+4239 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1773927751
+4240 INFO  cassdemo.backend.ClinicBackend: Appointment added for Donald Brown
+4289 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 2018290302, specialty orthopedics
+4290 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 2018290302
+4333 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 2061077528, specialty cardiology
+4333 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 2061077528
+4355 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1760471076, specialty general
+4355 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1760471076
+4403 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 2018290302. Now trying to schedule
+4412 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+4418 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 1280353193
+4418 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 1280353193 and replace it by 2018290302
+4424 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T14:30
+4446 INFO  cassdemo.backend.ClinicBackend: Appointment added for Richard Murphy
+4448 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 2061077528. Now trying to schedule
+4459 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+4467 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 2092272648
+4468 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 2092272648 and replace it by 2061077528
+4472 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1760471076. Now trying to schedule
+4475 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T12:30
+4488 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+4497 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+4504 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T15:30
+4535 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 1280353193 evicted and re-scheduled for 2025-01-23T14:30
+4536 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 2018290302
+4586 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 2092272648 evicted and re-scheduled for 2025-01-23T12:30
+4586 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 2061077528
+4610 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1760471076
+4651 INFO  cassdemo.backend.ClinicBackend: Appointment added for Maria Walker
+4652 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 2048885403, specialty orthopedics
+4652 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 2048885403
+4699 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 498784386, specialty cardiology
+4700 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 498784386
+4723 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1810397442, specialty general
+4724 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1810397442
+4767 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 2048885403. Now trying to schedule
+4775 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+4783 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 1676263386
+4783 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 1676263386 and replace it by 2048885403
+4789 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T15:00
+4812 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 498784386. Now trying to schedule
+4821 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+4825 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T13:00
+4838 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1810397442. Now trying to schedule
+4848 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+4854 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+4856 INFO  cassdemo.backend.ClinicBackend: Appointment added for Michael Roberts
+4859 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T16:00
+4898 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 1676263386 evicted and re-scheduled for 2025-01-23T15:00
+4899 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 2048885403
+4930 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 498784386
+4964 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1810397442
+5011 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 963423917, specialty orthopedics
+5011 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 963423917
+5043 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 290707221, specialty cardiology
+5044 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 290707221
+5062 INFO  cassdemo.backend.ClinicBackend: Appointment added for Brian Martin
+5077 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 259558800, specialty general
+5078 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 259558800
+5122 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 963423917. Now trying to schedule
+5133 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+5140 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 1137874440
+5141 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 1137874440 and replace it by 963423917
+5145 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T15:30
+5157 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 290707221. Now trying to schedule
+5167 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+5172 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 1342926382
+5173 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 1342926382 and replace it by 290707221
+5177 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T13:30
+5192 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 259558800. Now trying to schedule
+5201 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+5206 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+5211 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T16:30
+5254 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 1137874440 evicted and re-scheduled for 2025-01-23T15:30
+5254 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 963423917
+5267 INFO  cassdemo.backend.ClinicBackend: Appointment added for Carol Bailey
+5285 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 1342926382 evicted and re-scheduled for 2025-01-23T13:30
+5285 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 290707221
+5316 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 259558800
+5365 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 39873446, specialty orthopedics
+5366 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 39873446
+5399 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 1597444124, specialty cardiology
+5400 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 1597444124
+5429 INFO  c.s.AppointmentSchedulerThread: Now processing appointment with id 631413524, specialty general
+5430 INFO  c.s.AppointmentSchedulerThread: Checking ownership for appointment 631413524
+5472 INFO  cassdemo.backend.ClinicBackend: Appointment added for Mark Anderson
+5477 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 39873446. Now trying to schedule
+5485 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+5491 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 161884442
+5492 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 161884442 and replace it by 39873446
+5496 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 2 scheduled on 2025-01-23T16:00
+5511 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 1597444124. Now trying to schedule
+5519 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+5526 INFO  c.s.AppointmentSchedulerThread: Found eviction candidate 327235462
+5526 INFO  c.s.AppointmentSchedulerThread: Trying to evict appointment 327235462 and replace it by 1597444124
+5527 WARN  cassdemo.Main: Reads/second: 59.0
+5528 WARN  cassdemo.Main: Writes/second: 42.5
+5531 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 1 scheduled on 2025-01-23T14:00
+5542 INFO  c.s.AppointmentSchedulerThread: Successfully claimed ownership of 631413524. Now trying to schedule
+5550 INFO  c.s.AppointmentSchedulerThread: Eviction possible. Looking for an appointment to evict
+5557 INFO  c.s.AppointmentSchedulerThread: Eviction not possible. Using traditional insert...
+5562 INFO  cassdemo.backend.ClinicBackend: Doctor appointment for doctor 3 scheduled on 2025-01-23T17:00
+5605 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 161884442 evicted and re-scheduled for 2025-01-23T16:00
+5605 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 39873446
+5640 INFO  c.s.AppointmentSchedulerThread: DoctorAppointment 327235462 evicted and re-scheduled for 2025-01-23T14:00
+5640 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 1597444124
+5667 INFO  c.s.AppointmentSchedulerThread: Successfully scheduled appointment 631413524
+5677 INFO  cassdemo.backend.ClinicBackend: Appointment added for Donald Johnson
+5712 INFO  c.s.AppointmentSchedulerThread: Performing cleanup...
+5748 INFO  c.s.AppointmentSchedulerThread: Performing cleanup...
+5775 INFO  c.s.AppointmentSchedulerThread: Performing cleanup...

@@ -132,7 +132,7 @@ public class AppointmentSchedulerThread extends Thread {
                     if (slotContent.appointmentId != evictionCandidate.appointmentId) {
                         logger.info("Failed to evict and insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.appointmentId + " is already there");
                     } else {
-                        clinicBackend.updateDoctorAppointment(bestDoctorId, evictionCandidate.appointmentDate, evictionCandidate.timeSlot, appointmentId, priority, evictionCandidate.patientName, evictionCandidate.patientLastName);
+                        clinicBackend.updateDoctorAppointment(bestDoctorId, evictionCandidate.appointmentDate, evictionCandidate.timeSlot, appointmentId, priority, patientName, patientLastName);
                         logger.info("DoctorAppointment " + evictionCandidate.appointmentId + " evicted and re-scheduled for " + bestAvailableSlot);
                         appointmentInsertionSuccessfull = true;
                     }

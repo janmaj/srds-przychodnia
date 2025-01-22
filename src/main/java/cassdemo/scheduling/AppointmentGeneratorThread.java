@@ -13,10 +13,20 @@ import static cassdemo.util.Util.generateUUID;
 
 public class AppointmentGeneratorThread extends Thread {
     private static final Logger logger = LoggerFactory.getLogger(AppointmentGeneratorThread.class);
-    private static final String[] firstNames = {"James", "John", "Robert", "Michael", "William", "David", "Joseph",
-            "Charles", "Thomas", "Daniel", "Mary", "Jennifer", "Linda", "Patricia", "Elizabeth", "Susan", "Jessica",
-            "Sarah", "Karen", "Nancy"};
-    private static final String[] lastNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"};
+    private static final String[] firstNames = {
+            "James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth",
+            "David", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Charles", "Sarah", "Thomas", "Karen",
+            "Christopher", "Nancy", "Daniel", "Betty", "Matthew", "Helen", "Anthony", "Sandra", "Mark", "Ashley",
+            "Donald", "Kimberly", "Paul", "Emily", "George", "Donna", "Steven", "Michelle", "Edward", "Carol",
+            "Brian", "Dorothy", "Kevin", "Maria", "Andrew", "Deborah", "Joshua", "Sharon", "Gary", "Cynthia"
+    };
+    private static final String[] lastNames = {
+            "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor",
+            "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Roberts",
+            "Clark", "Rodriguez", "Lewis", "Walker", "Young", "Allen", "King", "Scott", "Green", "Baker",
+            "Adams", "Nelson", "Hill", "Carter", "Mitchell", "Perez", "Robinson", "Gonzalez", "Lopez", "Hernandez",
+            "Hill", "Ward", "Flores", "Rivera", "Wood", "Cooper", "Morris", "Murphy", "Bailey", "Bell"
+    };
     private final ClinicBackend clinicBackend;
 
     public AppointmentGeneratorThread(ClinicBackend clinicBackend) {

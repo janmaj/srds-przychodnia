@@ -9,16 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Dodanie imion i nazwisk pacjentów do tabeli DoctorAppointments">
       <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/classes/java/main/cassdemo/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.tar" beforeDir="false" afterPath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.tar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.zip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/distributions/srds-przychodnia.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/libs/srds-przychodnia.jar" beforeDir="false" afterPath="$PROJECT_DIR$/bin/libs/srds-przychodnia.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/create_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/create_schema.cql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/load_data.cql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/backend/ClinicBackend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/entities/DoctorAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/entities/DoctorAppointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -306,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737397955365</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Dodanie imion i nazwisk pacjentów do tabeli DoctorAppointments">
+      <option name="closed" value="true" />
+      <created>1737544988587</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1737544988587</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
