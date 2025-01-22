@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CassandraDemo.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.ipr" afterDir="false" />
+    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Dodatkowe sprawdzanie">
       <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/create_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/create_schema.cql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/drop_schema.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/drop_schema.cql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/load_data.cql" beforeDir="false" afterPath="$PROJECT_DIR$/schema/load_data.cql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,42 +66,78 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="srds-przychodnia" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="srds-przychodnia" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="srds-przychodnia" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="troche_rozszerzone" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "janmaj"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;janmaj&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:janmaj/srds-przychodnia.git",
-    "accountId": "473f3fec-c40c-4afd-aaf9-ec589cb685d1"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/janmaj/srds-przychodnia.git&quot;,
+    &quot;accountId&quot;: &quot;36903e54-6d7f-472f-8c7c-55daa13949dd&quot;
   }
-}]]></component>
+}</component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2GaKLkWBFNU1pZXyvkqnm4bLKd4" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state />
     </entry>
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
@@ -108,15 +146,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/jan/Studia/SRDS/srds-przychodnia"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.srds-przychodnia [:cassdemo.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;eviction&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jan/Studia/SRDS/srds-przychodnia&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
@@ -192,12 +234,122 @@
       <option name="presentableId" value="Default" />
       <updated>1666621200982</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implementacja algorytmu przydziału wizyt do lekarzy">
+      <option name="closed" value="true" />
+      <created>1734289087319</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734289087319</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Utworzenie klas do przetwarzania równoległego">
+      <option name="closed" value="true" />
+      <created>1734295228737</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734295228737</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implementacja unikania konfliktów na ile to możliwe">
+      <option name="closed" value="true" />
+      <created>1734381362833</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734381362833</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Generowanie losowych imion i nazwisk pacjentów">
+      <option name="closed" value="true" />
+      <created>1734454021403</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734454021403</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)">
+      <option name="closed" value="true" />
+      <created>1734466383492</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734466383492</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Stworzenie pakietu entity, naprawienie błędów">
+      <option name="closed" value="true" />
+      <created>1734473490411</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1734473490411</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Graceful shutdown przy przerywaniu programu">
+      <option name="closed" value="true" />
+      <created>1736193806080</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1736193806080</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Parametryzacja w linii polecen i liczenie IOPS">
+      <option name="closed" value="true" />
+      <created>1737397955365</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1737397955365</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Dodanie imion i nazwisk pacjentów do tabeli DoctorAppointments">
+      <option name="closed" value="true" />
+      <created>1737544988587</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1737544988587</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix bug">
+      <option name="closed" value="true" />
+      <created>1737548164791</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1737548164791</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Zliczanie anomalii">
+      <option name="closed" value="true" />
+      <created>1737556766531</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1737556766531</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Dodatkowe sprawdzanie">
+      <option name="closed" value="true" />
+      <created>1737559613585</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1737559613585</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.cql" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implementacja algorytmu przydziału wizyt do lekarzy" />
+    <MESSAGE value="Utworzenie klas do przetwarzania równoległego" />
+    <MESSAGE value="Implementacja unikania konfliktów na ile to możliwe" />
+    <MESSAGE value="Generowanie losowych imion i nazwisk pacjentów" />
+    <MESSAGE value="Wywłaszczanie wizyt o mniejszym priorytecie (spaghetti code)" />
+    <MESSAGE value="Stworzenie pakietu entity, naprawienie błędów" />
+    <MESSAGE value="Graceful shutdown przy przerywaniu programu" />
+    <MESSAGE value="Parametryzacja w linii polecen i liczenie IOPS" />
+    <MESSAGE value="Dodanie imion i nazwisk pacjentów do tabeli DoctorAppointments" />
+    <MESSAGE value="Fix bug" />
+    <MESSAGE value="Zliczanie anomalii" />
+    <MESSAGE value="Dodatkowe sprawdzanie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodatkowe sprawdzanie" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>

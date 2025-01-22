@@ -1,0 +1,91 @@
+846  WARN  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, but epoll is not available. Using NIO instead.
+java.lang.NoClassDefFoundError: Could not initialize class io.netty.util.internal.PlatformDependent0
+	at io.netty.util.internal.PlatformDependent.getClassLoader(PlatformDependent.java:624)
+	at io.netty.channel.epoll.Native.loadNativeLibrary(Native.java:269)
+	at io.netty.channel.epoll.Native.<clinit>(Native.java:64)
+	at io.netty.channel.epoll.Epoll.<clinit>(Epoll.java:33)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:375)
+	at com.datastax.driver.core.NettyUtil.<clinit>(NettyUtil.java:68)
+	at com.datastax.driver.core.NettyOptions.eventLoopGroup(NettyOptions.java:99)
+	at com.datastax.driver.core.Connection$Factory.<init>(Connection.java:774)
+	at com.datastax.driver.core.Cluster$Manager.init(Cluster.java:1446)
+	at com.datastax.driver.core.Cluster.init(Cluster.java:159)
+	at com.datastax.driver.core.Cluster.connectAsync(Cluster.java:330)
+	at com.datastax.driver.core.Cluster.connect(Cluster.java:280)
+	at cassdemo.backend.ClinicBackend.<init>(ClinicBackend.java:46)
+	at cassdemo.Main.main(Main.java:66)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.reflect.InaccessibleObjectException: Unable to make field long java.nio.Buffer.address accessible: module java.base does not "opens java.nio" to unnamed module @61b0228f [in thread "main"]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:178)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:172)
+	at io.netty.util.internal.PlatformDependent0$1.run(PlatformDependent0.java:67)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:62)
+	at io.netty.util.internal.PlatformDependent.getSystemClassLoader(PlatformDependent.java:638)
+	at io.netty.util.internal.PlatformDependent.isAndroid0(PlatformDependent.java:655)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:76)
+	at io.netty.util.Signal.<clinit>(Signal.java:31)
+	at io.netty.util.concurrent.DefaultPromise.<clinit>(DefaultPromise.java:43)
+	at io.netty.util.concurrent.GlobalEventExecutor.<init>(GlobalEventExecutor.java:44)
+	at io.netty.util.concurrent.GlobalEventExecutor.<clinit>(GlobalEventExecutor.java:41)
+	at com.datastax.driver.core.Connection$Factory.<init>(Connection.java:752)
+	... 6 common frames omitted
+1709 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1325957338. Backing off...
+1712 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1325957338. Backing off...
+1708 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1325957338. Backing off...
+1970 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 142498091. Backing off...
+2026 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 544042938. Backing off...
+2034 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 544042938. Backing off...
+2164 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1942504489 is already there
+2300 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 245901664 is already there
+2738 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 2046002730 is already there
+2941 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 538758565 is already there
+3215 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 1484047522 is already there
+3410 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1099327701 is already there
+3492 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1099327701 is already there
+3572 WARN  cassdemo.Main: Reads/second: 241.0
+3573 WARN  cassdemo.Main: Writes/second: 135.0
+3573 WARN  cassdemo.Main: Total anomaly count: 13
+3573 WARN  cassdemo.Main: -----
+3710 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 2026403551 is already there
+3965 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1105584637. Backing off...
+4034 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 113305323. Backing off...
+4352 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1045521596 is already there
+4427 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 67199923 is already there
+4966 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1147246057. Backing off...
+5034 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1105584637. Backing off...
+5096 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 91110862 is already there
+5284 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 1068539671 is already there
+5320 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 291693890 is already there
+5566 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 514458352 is already there
+5573 WARN  cassdemo.Main: Reads/second: 268.0
+5573 WARN  cassdemo.Main: Writes/second: 148.5
+5574 WARN  cassdemo.Main: Total anomaly count: 24
+5574 WARN  cassdemo.Main: -----
+5839 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 2051176364 is already there
+6217 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 558183163 is already there
+6951 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 17499247 is already there
+7201 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 198477706. Backing off...
+7456 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 213184269 is already there
+7574 WARN  cassdemo.Main: Reads/second: 251.0
+7574 WARN  cassdemo.Main: Writes/second: 147.5
+7574 WARN  cassdemo.Main: Total anomaly count: 29
+7574 WARN  cassdemo.Main: -----
+7627 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 198477706. Backing off...
+7827 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 679762697 is already there
+7947 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 556469997 is already there
+8010 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 903137899 is already there
+8720 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1067546636 is already there
+8889 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1325957338. Backing off...
+8902 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 1673130366 is already there
+9575 WARN  cassdemo.Main: Reads/second: 254.5
+9576 WARN  cassdemo.Main: Writes/second: 158.5
+9576 WARN  cassdemo.Main: Total anomaly count: 36
+9576 WARN  cassdemo.Main: -----
+9626 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 1299244959 is already there
+11577 WARN  cassdemo.Main: Reads/second: 71.5
+11577 WARN  cassdemo.Main: Writes/second: 68.0
+11577 WARN  cassdemo.Main: Total anomaly count: 37
+11577 WARN  cassdemo.Main: -----
