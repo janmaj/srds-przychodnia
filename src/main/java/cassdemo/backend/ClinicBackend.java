@@ -57,7 +57,7 @@ public class ClinicBackend {
         try {
             INSERT_APPOINTMENT = session.prepare("INSERT INTO Appointments (specialty, priority, appointment_id, patient_first_name, patient_last_name, timestamp) " + "VALUES (?, ?, ?, ?, ?, ?);");
 
-            INSERT_DOCTOR_APPOINTMENT = session.prepare("INSERT INTO DoctorAppointments (doctor_id, appointment_date, time_slot, appointment_id, priority) " + "VALUES (?, ?, ?, ?, ?);");
+            INSERT_DOCTOR_APPOINTMENT = session.prepare("INSERT INTO DoctorAppointments (doctor_id, appointment_date, time_slot, appointment_id, priority, patient_first_name, patient_last_name) " + "VALUES (?, ?, ?, ?, ?, ?, ?);");
 
             SELECT_PENDING_APPOINTMENTS = session.prepare("SELECT * FROM Appointments WHERE specialty = ? ORDER BY priority DESC, timestamp ASC LIMIT 50;");
 
@@ -69,7 +69,7 @@ public class ClinicBackend {
 
             SELECT_DOCTOR_APPOINTMENTS = session.prepare("SELECT * FROM DoctorAppointments WHERE doctor_id = ? AND appointment_date = ? ORDER BY time_slot ASC;");
 
-            UPDATE_DOCTOR_APPOINTMENT = session.prepare("UPDATE DoctorAppointments SET appointment_id = ?, priority = ? WHERE doctor_id = ? AND appointment_date = ? AND time_slot = ?;");
+            UPDATE_DOCTOR_APPOINTMENT = session.prepare("UPDATE DoctorAppointments SET appointment_id = ?, priority = ?, patient_first_name = ?, patient_last_name = ? WHERE doctor_id = ? AND appointment_date = ? AND time_slot = ?;");
 
             UPSERT_OWNERSHIP = session.prepare("INSERT INTO AppointmentOwnership (appointment_id, scheduler_id) VALUES (?, ?);");
 
@@ -170,8 +170,10 @@ public class ClinicBackend {
         LocalDate appointmentDate = LocalDate.of(slotDate.getYear(), slotDate.getMonth(), slotDate.getDay());
         int appointmentId = row.getInt("appointment_id");
         int priority = row.getInt("priority");
+        String patientName = row.getString("patient_first_name");
+        String patientLastName = row.getString("patient_last_name");
 
-        return new DoctorAppointment(doctorId, appointmentDate, timeSlot, appointmentId, priority);
+        return new DoctorAppointment(doctorId, appointmentDate, timeSlot, appointmentId, priority, patientName, patientLastName);
     }
 
     public List<Doctor> getDoctorsBySpecialty(String specialty) {
@@ -200,13 +202,16 @@ public class ClinicBackend {
         Row row = rs.one();
         int appointmentId = row.getInt("appointment_id");
         int priority = row.getInt("priority");
-        return new DoctorAppointment(doctorId, appointmentDate, timeSlot, appointmentId, priority);
+        String patientName = row.getString("patient_first_name");
+        String patientLastName = row.getString("patient_last_name");
+
+        return new DoctorAppointment(doctorId, appointmentDate, timeSlot, appointmentId, priority, patientName, patientLastName);
     }
 
-    public void scheduleDoctorAppointment(int doctorId, int appointmentId, LocalDateTime timestamp, int priority) throws BackendException {
+    public void scheduleDoctorAppointment(int doctorId, int appointmentId, LocalDateTime timestamp, int priority, String patientName, String patientLastName) throws BackendException {
         BoundStatement bs = new BoundStatement(INSERT_DOCTOR_APPOINTMENT);
         com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(timestamp.getYear(), timestamp.getMonthValue(), timestamp.getDayOfMonth());
-        bs.bind(doctorId, cassandraDate, timestamp.toLocalTime().toNanoOfDay(), appointmentId, priority);
+        bs.bind(doctorId, cassandraDate, timestamp.toLocalTime().toNanoOfDay(), appointmentId, priority, patientName, patientLastName);
 
         try {
             session.execute(bs);
@@ -227,17 +232,19 @@ public class ClinicBackend {
         for (Row row : rs) {
             int appointmentId = row.getInt("appointment_id");
             int priority = row.getInt("priority");
+            String patientName = row.getString("patient_first_name");
+            String patientLastName = row.getString("patient_last_name");
             LocalTime timeSlot = (new Time(row.getTime("time_slot") / 1000000)).toLocalTime();
 
-            appointments.add(new DoctorAppointment(doctorId, appointmentDate, timeSlot, appointmentId, priority));
+            appointments.add(new DoctorAppointment(doctorId, appointmentDate, timeSlot, appointmentId, priority, patientName, patientLastName));
         }
         return appointments;
     }
 
-    public void updateDoctorAppointment(int doctorId, LocalDate appointmentDate, LocalTime timeSlot, int appointmentId, int priority) {
+    public void updateDoctorAppointment(int doctorId, LocalDate appointmentDate, LocalTime timeSlot, int appointmentId, int priority, String patientName, String patientLastName) {
         BoundStatement bs = new BoundStatement(UPDATE_DOCTOR_APPOINTMENT);
         com.datastax.driver.core.LocalDate cassandraDate = com.datastax.driver.core.LocalDate.fromYearMonthDay(appointmentDate.getYear(), appointmentDate.getMonthValue(), appointmentDate.getDayOfMonth());
-        bs.bind(appointmentId, priority, doctorId, cassandraDate, timeSlot.toNanoOfDay());
+        bs.bind(appointmentId, priority, patientName, patientLastName, doctorId, cassandraDate, timeSlot.toNanoOfDay());
         session.execute(bs);
         writeCount.getAndIncrement();
     }

@@ -23,6 +23,8 @@ CREATE TABLE DoctorAppointments (
     time_slot time,               
     appointment_id int,
     priority int,
+    patient_first_name text,
+    patient_last_name text,
     PRIMARY KEY ((doctor_id), appointment_date, time_slot) 
 );
 

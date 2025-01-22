@@ -74,7 +74,7 @@ public class AppointmentSchedulerThread extends Thread {
             }
             logger.info("Successfully claimed ownership of " + processedAppointment.appointmentId + ". Now trying to schedule");
 
-            findAvailableDoctor(specialty, processedAppointment.appointmentId, processedAppointment.priority);
+            findAvailableDoctor(specialty, processedAppointment.appointmentId, processedAppointment.priority, processedAppointment.patientFirstName, processedAppointment.patientLastName);
             logger.info("Successfully scheduled appointment " + processedAppointment.appointmentId);
             clinicBackend.deleteAppointment(processedAppointment);
             clinicBackend.deleteOwnership(processedAppointment.appointmentId);
@@ -83,7 +83,7 @@ public class AppointmentSchedulerThread extends Thread {
 
     }
 
-    private void findAvailableDoctor(String specialty, int appointmentId, int priority) throws BackendException, InterruptedException {
+    private void findAvailableDoctor(String specialty, int appointmentId, int priority, String patientName, String patientLastName) throws BackendException, InterruptedException {
         LocalDateTime bestAvailableSlot = null;
         int bestDoctorId = -1;
 
@@ -126,13 +126,13 @@ public class AppointmentSchedulerThread extends Thread {
                     evictionPossible = false;
                 } else {
                     logger.info("Trying to evict appointment " + evictionCandidate.appointmentId + " and replace it by " + appointmentId);
-                    clinicBackend.scheduleDoctorAppointment(bestDoctorId, evictionCandidate.appointmentId, bestAvailableSlot, evictionCandidate.priority);
+                    clinicBackend.scheduleDoctorAppointment(bestDoctorId, evictionCandidate.appointmentId, bestAvailableSlot, evictionCandidate.priority, evictionCandidate.patientName, evictionCandidate.patientLastName);
                     Thread.sleep(100);
                     DoctorAppointment slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
                     if (slotContent.appointmentId != evictionCandidate.appointmentId) {
                         logger.info("Failed to evict and insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.appointmentId + " is already there");
                     } else {
-                        clinicBackend.updateDoctorAppointment(bestDoctorId, evictionCandidate.appointmentDate, evictionCandidate.timeSlot, appointmentId, priority);
+                        clinicBackend.updateDoctorAppointment(bestDoctorId, evictionCandidate.appointmentDate, evictionCandidate.timeSlot, appointmentId, priority, evictionCandidate.patientName, evictionCandidate.patientLastName);
                         logger.info("DoctorAppointment " + evictionCandidate.appointmentId + " evicted and re-scheduled for " + bestAvailableSlot);
                         appointmentInsertionSuccessfull = true;
                     }
@@ -140,7 +140,7 @@ public class AppointmentSchedulerThread extends Thread {
             }
             if (!evictionPossible || priority == 3) {
                 logger.info("Eviction not possible. Using traditional insert...");
-                clinicBackend.scheduleDoctorAppointment(bestDoctorId, appointmentId, bestAvailableSlot, priority);
+                clinicBackend.scheduleDoctorAppointment(bestDoctorId, appointmentId, bestAvailableSlot, priority, patientName, patientLastName);
                 Thread.sleep(100);
                 DoctorAppointment slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
                 if (slotContent.appointmentId != appointmentId) {

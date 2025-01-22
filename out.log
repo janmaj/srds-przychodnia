@@ -1,4 +1,4 @@
-805  WARN  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, but epoll is not available. Using NIO instead.
+810  WARN  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, but epoll is not available. Using NIO instead.
 java.lang.NoClassDefFoundError: Could not initialize class io.netty.util.internal.PlatformDependent0
 	at io.netty.util.internal.PlatformDependent.getClassLoader(PlatformDependent.java:624)
 	at io.netty.channel.epoll.Native.loadNativeLibrary(Native.java:269)
@@ -14,7 +14,7 @@ java.lang.NoClassDefFoundError: Could not initialize class io.netty.util.interna
 	at com.datastax.driver.core.Cluster.connectAsync(Cluster.java:330)
 	at com.datastax.driver.core.Cluster.connect(Cluster.java:280)
 	at cassdemo.backend.ClinicBackend.<init>(ClinicBackend.java:46)
-	at cassdemo.Main.main(Main.java:69)
+	at cassdemo.Main.main(Main.java:65)
 Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.reflect.InaccessibleObjectException: Unable to make field long java.nio.Buffer.address accessible: module java.base does not "opens java.nio" to unnamed module @61b0228f [in thread "main"]
 	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
 	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
@@ -32,39 +32,9 @@ Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.reflect.In
 	at io.netty.util.concurrent.GlobalEventExecutor.<clinit>(GlobalEventExecutor.java:41)
 	at com.datastax.driver.core.Connection$Factory.<init>(Connection.java:752)
 	... 6 common frames omitted
-3522 WARN  cassdemo.Main: Reads/second: 46.0
-3522 WARN  cassdemo.Main: Writes/second: 25.5
-5523 WARN  cassdemo.Main: Reads/second: 45.5
-5523 WARN  cassdemo.Main: Writes/second: 25.5
-7523 WARN  cassdemo.Main: Reads/second: 47.5
-7523 WARN  cassdemo.Main: Writes/second: 29.0
-9524 WARN  cassdemo.Main: Reads/second: 44.5
-9524 WARN  cassdemo.Main: Writes/second: 25.5
-11524 WARN  cassdemo.Main: Reads/second: 47.0
-11525 WARN  cassdemo.Main: Writes/second: 28.5
-13525 WARN  cassdemo.Main: Reads/second: 46.0
-13525 WARN  cassdemo.Main: Writes/second: 27.0
-15525 WARN  cassdemo.Main: Reads/second: 46.5
-15526 WARN  cassdemo.Main: Writes/second: 27.0
-17526 WARN  cassdemo.Main: Reads/second: 46.0
-17526 WARN  cassdemo.Main: Writes/second: 24.0
-19526 WARN  cassdemo.Main: Reads/second: 45.5
-19527 WARN  cassdemo.Main: Writes/second: 28.5
-21527 WARN  cassdemo.Main: Reads/second: 45.0
-21527 WARN  cassdemo.Main: Writes/second: 27.0
-23528 WARN  cassdemo.Main: Reads/second: 48.5
-23528 WARN  cassdemo.Main: Writes/second: 29.5
-25528 WARN  cassdemo.Main: Reads/second: 44.0
-25529 WARN  cassdemo.Main: Writes/second: 26.5
-27529 WARN  cassdemo.Main: Reads/second: 47.5
-27529 WARN  cassdemo.Main: Writes/second: 28.0
-29529 WARN  cassdemo.Main: Reads/second: 46.5
-29530 WARN  cassdemo.Main: Writes/second: 28.5
-31530 WARN  cassdemo.Main: Reads/second: 46.5
-31530 WARN  cassdemo.Main: Writes/second: 27.0
-33531 WARN  cassdemo.Main: Reads/second: 44.5
-33531 WARN  cassdemo.Main: Writes/second: 25.0
-35531 WARN  cassdemo.Main: Reads/second: 45.0
-35532 WARN  cassdemo.Main: Writes/second: 28.0
-37532 WARN  cassdemo.Main: Reads/second: 46.0
-37532 WARN  cassdemo.Main: Writes/second: 26.0
+3634 WARN  cassdemo.Main: Reads/second: 47.0
+3634 WARN  cassdemo.Main: Writes/second: 29.0
+5635 WARN  cassdemo.Main: Reads/second: 42.0
+5636 WARN  cassdemo.Main: Writes/second: 24.0
+7637 WARN  cassdemo.Main: Reads/second: 48.0
+7638 WARN  cassdemo.Main: Writes/second: 32.5

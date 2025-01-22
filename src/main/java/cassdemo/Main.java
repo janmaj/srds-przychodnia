@@ -71,6 +71,9 @@ public class Main {
 //         backend.addDoctor(3, "Dr. Williams", "cardiology", "08:00:00", "16:00:00");
 //         backend.addDoctor(4, "Dr. Walker", "orthopedics", "08:00:00", "16:00:00");
 
+        if (GENERATOR_THREADS == 0 && SCHEDULERS_PER_SPECIALTY == 0) {
+            System.exit(0);
+        }
         List<Thread> schedulerThreads = new ArrayList<>();
 
         for (int i = 0; i < GENERATOR_THREADS; i++) {
