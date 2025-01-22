@@ -28,6 +28,7 @@ public class Main {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         AtomicInteger readCount = new AtomicInteger(0);
         AtomicInteger writeCount = new AtomicInteger(0);
+        AtomicInteger anomalyCount = new AtomicInteger(0);
 
         Properties properties = new Properties();
         try {
@@ -84,7 +85,7 @@ public class Main {
 
         for (String specialty : specialties) {
             for (int i = 0; i < SCHEDULERS_PER_SPECIALTY; i++) {
-                Thread schedulerThread = new AppointmentSchedulerThread(backend, specialty);
+                Thread schedulerThread = new AppointmentSchedulerThread(backend, specialty, anomalyCount);
                 schedulerThreads.add(schedulerThread);
                 schedulerThread.start();
             }
@@ -110,6 +111,8 @@ public class Main {
                 sleep(2000);
                 logger.warn("Reads/second: " + readCount.get() / 2.0);
                 logger.warn("Writes/second: " + writeCount.get() / 2.0);
+                logger.warn("Total anomaly count: " + anomalyCount.get());
+                logger.warn("-----");
             }
         } catch (InterruptedException e) {
             logger.info("Application terminated by user");

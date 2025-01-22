@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static cassdemo.util.Util.generateUUID;
 
@@ -24,11 +25,13 @@ public class AppointmentSchedulerThread extends Thread {
     private final int id;
     private Appointment processedAppointment;
     private volatile boolean interrupted = false;
+    private AtomicInteger anomalyCount;
 
-    public AppointmentSchedulerThread(ClinicBackend clinicBackend, String specialty) {
+    public AppointmentSchedulerThread(ClinicBackend clinicBackend, String specialty, AtomicInteger anomalyCount) {
         this.clinicBackend = clinicBackend;
         this.specialty = specialty;
         this.id = generateUUID();
+        this.anomalyCount = anomalyCount;
     }
 
     @Override
@@ -69,7 +72,8 @@ public class AppointmentSchedulerThread extends Thread {
             Thread.sleep(100);
             appointmentOwnership = clinicBackend.selectOwnership(processedAppointment.appointmentId);
             if (appointmentOwnership != null && appointmentOwnership.schedulerId != this.id) {
-                logger.info("Appointment already owned by scheduler " + appointmentOwnership.schedulerId + ". Backing off...");
+                logger.warn("Appointment already owned by scheduler " + appointmentOwnership.schedulerId + ". Backing off...");
+                anomalyCount.getAndIncrement();
                 continue;
             }
             logger.info("Successfully claimed ownership of " + processedAppointment.appointmentId + ". Now trying to schedule");
@@ -130,7 +134,8 @@ public class AppointmentSchedulerThread extends Thread {
                     Thread.sleep(100);
                     DoctorAppointment slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
                     if (slotContent.appointmentId != evictionCandidate.appointmentId) {
-                        logger.info("Failed to evict and insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.appointmentId + " is already there");
+                        logger.error("Failed to evict and insert doctor appointment for doctor " + bestDoctorId + ". Appointment " + slotContent.appointmentId + " is already there");
+                        anomalyCount.getAndIncrement();
                     } else {
                         clinicBackend.updateDoctorAppointment(bestDoctorId, evictionCandidate.appointmentDate, evictionCandidate.timeSlot, appointmentId, priority, patientName, patientLastName);
                         logger.info("DoctorAppointment " + evictionCandidate.appointmentId + " evicted and re-scheduled for " + bestAvailableSlot);

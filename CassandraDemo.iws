@@ -7,10 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Dodanie imion i nazwisk pacjentów do tabeli DoctorAppointments">
-      <change beforePath="$PROJECT_DIR$/CassandraDemo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CassandraDemo.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentGeneratorThread.java" afterDir="false" />
+    <list default="true" id="dc92f25f-36f0-4e31-96c1-dd2644ad9ff9" name="Changes" comment="Fix bug">
+      <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cassdemo/scheduling/AppointmentSchedulerThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -306,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737544988587</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fix bug">
+      <option name="closed" value="true" />
+      <created>1737548164791</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1737548164791</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -322,7 +328,8 @@
     <MESSAGE value="Graceful shutdown przy przerywaniu programu" />
     <MESSAGE value="Parametryzacja w linii polecen i liczenie IOPS" />
     <MESSAGE value="Dodanie imion i nazwisk pacjentów do tabeli DoctorAppointments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodanie imion i nazwisk pacjentów do tabeli DoctorAppointments" />
+    <MESSAGE value="Fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bug" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
 </project>
