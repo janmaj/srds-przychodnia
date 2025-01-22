@@ -29,6 +29,7 @@ public class Main {
         AtomicInteger readCount = new AtomicInteger(0);
         AtomicInteger writeCount = new AtomicInteger(0);
         AtomicInteger anomalyCount = new AtomicInteger(0);
+        AtomicInteger successCount = new AtomicInteger(0);
 
         Properties properties = new Properties();
         try {
@@ -85,7 +86,7 @@ public class Main {
 
         for (String specialty : specialties) {
             for (int i = 0; i < SCHEDULERS_PER_SPECIALTY; i++) {
-                Thread schedulerThread = new AppointmentSchedulerThread(backend, specialty, anomalyCount);
+                Thread schedulerThread = new AppointmentSchedulerThread(backend, specialty, anomalyCount, successCount);
                 schedulerThreads.add(schedulerThread);
                 schedulerThread.start();
             }
@@ -112,6 +113,7 @@ public class Main {
                 logger.warn("Reads/second: " + readCount.get() / 2.0);
                 logger.warn("Writes/second: " + writeCount.get() / 2.0);
                 logger.warn("Total anomaly count: " + anomalyCount.get());
+                logger.warn("Total scheduled appointments: " + successCount.get());
                 logger.warn("-----");
             }
         } catch (InterruptedException e) {

@@ -1,4 +1,4 @@
-821  WARN  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, but epoll is not available. Using NIO instead.
+846  WARN  com.datastax.driver.core.NettyUtil: Found Netty's native epoll transport in the classpath, but epoll is not available. Using NIO instead.
 java.lang.NoClassDefFoundError: Could not initialize class io.netty.util.internal.PlatformDependent0
 	at io.netty.util.internal.PlatformDependent.getClassLoader(PlatformDependent.java:624)
 	at io.netty.channel.epoll.Native.loadNativeLibrary(Native.java:269)
@@ -32,69 +32,60 @@ Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.reflect.In
 	at io.netty.util.concurrent.GlobalEventExecutor.<clinit>(GlobalEventExecutor.java:41)
 	at com.datastax.driver.core.Connection$Factory.<init>(Connection.java:752)
 	... 6 common frames omitted
-2085 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1884357290. Backing off...
-2702 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1394271185. Backing off...
-2703 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1394271185. Backing off...
-2923 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1751556505. Backing off...
-3532 WARN  cassdemo.Main: Reads/second: 171.5
-3532 WARN  cassdemo.Main: Writes/second: 41.0
-3532 WARN  cassdemo.Main: Total anomaly count: 4
-3532 WARN  cassdemo.Main: -----
-3710 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 60776188. Backing off...
-4570 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 202307594. Backing off...
-5532 WARN  cassdemo.Main: Reads/second: 164.5
-5533 WARN  cassdemo.Main: Writes/second: 35.0
-5533 WARN  cassdemo.Main: Total anomaly count: 6
-5533 WARN  cassdemo.Main: -----
-5965 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1751556505. Backing off...
-7533 WARN  cassdemo.Main: Reads/second: 161.5
-7534 WARN  cassdemo.Main: Writes/second: 34.5
-7534 WARN  cassdemo.Main: Total anomaly count: 7
-7534 WARN  cassdemo.Main: -----
-9535 WARN  cassdemo.Main: Reads/second: 160.0
-9536 WARN  cassdemo.Main: Writes/second: 26.5
-9536 WARN  cassdemo.Main: Total anomaly count: 7
-9537 WARN  cassdemo.Main: -----
-9790 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 996783722. Backing off...
-10660 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 202307594. Backing off...
-11538 WARN  cassdemo.Main: Reads/second: 161.5
-11538 WARN  cassdemo.Main: Writes/second: 28.0
-11538 WARN  cassdemo.Main: Total anomaly count: 9
-11538 WARN  cassdemo.Main: -----
-12099 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1751556505. Backing off...
-13539 WARN  cassdemo.Main: Reads/second: 163.5
-13539 WARN  cassdemo.Main: Writes/second: 28.5
-13539 WARN  cassdemo.Main: Total anomaly count: 10
-13539 WARN  cassdemo.Main: -----
-13896 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 60776188. Backing off...
-13899 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 60776188. Backing off...
-15187 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1261452070. Backing off...
-15540 WARN  cassdemo.Main: Reads/second: 163.5
-15540 WARN  cassdemo.Main: Writes/second: 29.0
-15540 WARN  cassdemo.Main: Total anomaly count: 13
-15540 WARN  cassdemo.Main: -----
-16325 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1751556505. Backing off...
-16887 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 202307594. Backing off...
-17103 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 390132318. Backing off...
-17540 WARN  cassdemo.Main: Reads/second: 170.0
-17541 WARN  cassdemo.Main: Writes/second: 30.0
-17541 WARN  cassdemo.Main: Total anomaly count: 16
-17541 WARN  cassdemo.Main: -----
-18165 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 390132318. Backing off...
-18341 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1273141915. Backing off...
-18912 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1261452070. Backing off...
-19541 WARN  cassdemo.Main: Reads/second: 159.5
-19542 WARN  cassdemo.Main: Writes/second: 28.5
-19542 WARN  cassdemo.Main: Total anomaly count: 19
-19542 WARN  cassdemo.Main: -----
-19566 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 837567424. Backing off...
-19761 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 996783722. Backing off...
-19761 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 996783722. Backing off...
-20154 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1702216895. Backing off...
-20421 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1261452070. Backing off...
-20809 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 202307594. Backing off...
-21214 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1884357290. Backing off...
-21542 WARN  cassdemo.Main: Reads/second: 164.5
-21543 WARN  cassdemo.Main: Writes/second: 37.5
-21543 WARN  cassdemo.Main: Total anomaly count: 26
-21543 WARN  cassdemo.Main: -----
+1709 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1325957338. Backing off...
+1712 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1325957338. Backing off...
+1708 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1325957338. Backing off...
+1970 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 142498091. Backing off...
+2026 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 544042938. Backing off...
+2034 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 544042938. Backing off...
+2164 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1942504489 is already there
+2300 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 245901664 is already there
+2738 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 2046002730 is already there
+2941 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 538758565 is already there
+3215 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 1484047522 is already there
+3410 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1099327701 is already there
+3492 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1099327701 is already there
+3572 WARN  cassdemo.Main: Reads/second: 241.0
+3573 WARN  cassdemo.Main: Writes/second: 135.0
+3573 WARN  cassdemo.Main: Total anomaly count: 13
+3573 WARN  cassdemo.Main: -----
+3710 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 2026403551 is already there
+3965 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1105584637. Backing off...
+4034 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 113305323. Backing off...
+4352 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1045521596 is already there
+4427 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 67199923 is already there
+4966 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1147246057. Backing off...
+5034 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1105584637. Backing off...
+5096 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 91110862 is already there
+5284 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 1068539671 is already there
+5320 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 291693890 is already there
+5566 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 514458352 is already there
+5573 WARN  cassdemo.Main: Reads/second: 268.0
+5573 WARN  cassdemo.Main: Writes/second: 148.5
+5574 WARN  cassdemo.Main: Total anomaly count: 24
+5574 WARN  cassdemo.Main: -----
+5839 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 2051176364 is already there
+6217 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 558183163 is already there
+6951 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 17499247 is already there
+7201 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 198477706. Backing off...
+7456 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 213184269 is already there
+7574 WARN  cassdemo.Main: Reads/second: 251.0
+7574 WARN  cassdemo.Main: Writes/second: 147.5
+7574 WARN  cassdemo.Main: Total anomaly count: 29
+7574 WARN  cassdemo.Main: -----
+7627 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 198477706. Backing off...
+7827 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 679762697 is already there
+7947 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 556469997 is already there
+8010 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 903137899 is already there
+8720 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 1. Appointment 1067546636 is already there
+8889 WARN  c.s.AppointmentSchedulerThread: Appointment already owned by scheduler 1325957338. Backing off...
+8902 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 2. Appointment 1673130366 is already there
+9575 WARN  cassdemo.Main: Reads/second: 254.5
+9576 WARN  cassdemo.Main: Writes/second: 158.5
+9576 WARN  cassdemo.Main: Total anomaly count: 36
+9576 WARN  cassdemo.Main: -----
+9626 ERROR c.s.AppointmentSchedulerThread: Failed to evict and insert doctor appointment for doctor 3. Appointment 1299244959 is already there
+11577 WARN  cassdemo.Main: Reads/second: 71.5
+11577 WARN  cassdemo.Main: Writes/second: 68.0
+11577 WARN  cassdemo.Main: Total anomaly count: 37
+11577 WARN  cassdemo.Main: -----

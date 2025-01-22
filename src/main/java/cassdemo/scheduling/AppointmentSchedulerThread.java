@@ -26,12 +26,14 @@ public class AppointmentSchedulerThread extends Thread {
     private Appointment processedAppointment;
     private volatile boolean interrupted = false;
     private AtomicInteger anomalyCount;
+    private AtomicInteger successCount;
 
-    public AppointmentSchedulerThread(ClinicBackend clinicBackend, String specialty, AtomicInteger anomalyCount) {
+    public AppointmentSchedulerThread(ClinicBackend clinicBackend, String specialty, AtomicInteger anomalyCount, AtomicInteger successCount) {
         this.clinicBackend = clinicBackend;
         this.specialty = specialty;
         this.id = generateUUID();
         this.anomalyCount = anomalyCount;
+        this.successCount = successCount;
     }
 
     @Override
@@ -83,6 +85,7 @@ public class AppointmentSchedulerThread extends Thread {
             clinicBackend.deleteAppointment(processedAppointment);
             clinicBackend.deleteOwnership(processedAppointment.appointmentId);
             schedulingWasSuccessful = true;
+            successCount.getAndIncrement();
         }
 
     }
