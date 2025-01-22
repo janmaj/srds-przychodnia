@@ -130,6 +130,13 @@ public class AppointmentSchedulerThread extends Thread {
                     evictionPossible = false;
                 } else {
                     logger.info("Trying to evict appointment " + evictionCandidate.appointmentId + " and replace it by " + appointmentId);
+                    clinicBackend.claimAppointmentOwnership(processedAppointment.appointmentId, this.id);
+                    Thread.sleep(100);
+                    AppointmentOwnership appointmentOwnership = clinicBackend.selectOwnership(processedAppointment.appointmentId);
+                    if (appointmentOwnership != null && appointmentOwnership.schedulerId != this.id) {
+                        logger.warn("Appointment already owned by scheduler " + appointmentOwnership.schedulerId + ". Backing off...");
+                        anomalyCount.getAndIncrement();
+                    }
                     clinicBackend.scheduleDoctorAppointment(bestDoctorId, evictionCandidate.appointmentId, bestAvailableSlot, evictionCandidate.priority, evictionCandidate.patientName, evictionCandidate.patientLastName);
                     Thread.sleep(100);
                     DoctorAppointment slotContent = clinicBackend.checkScheduleSlot(bestDoctorId, bestAvailableSlot.toLocalDate(), bestAvailableSlot.toLocalTime());
@@ -141,9 +148,10 @@ public class AppointmentSchedulerThread extends Thread {
                         logger.info("DoctorAppointment " + evictionCandidate.appointmentId + " evicted and re-scheduled for " + bestAvailableSlot);
                         appointmentInsertionSuccessfull = true;
                     }
+                    clinicBackend.deleteOwnership(evictionCandidate.appointmentId);
                 }
             }
-            if (!evictionPossible || priority == 3) {
+            if (!evictionPossible || priority == 3 || appointmentInsertionSuccessfull) {
                 logger.info("Eviction not possible. Using traditional insert...");
                 clinicBackend.scheduleDoctorAppointment(bestDoctorId, appointmentId, bestAvailableSlot, priority, patientName, patientLastName);
                 Thread.sleep(100);
