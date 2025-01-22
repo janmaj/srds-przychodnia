@@ -55,37 +55,6 @@ Plik `config.properties` określa:
 - Liczbę wątków do generowania i harmonogramowania wizyt.
 - Liczbę lekarzy do symulacji (**`doctor_count`**).
 
----
-
-## Technologia
-Projekt wykorzystuje:
-- **Apache Cassandra** jako bazę danych.
-- Mechanizmy wielowątkowości w Javie do przetwarzania wizyt.
-
----
-
-## Struktura Plików
-- **`src/main/java`**: Kod źródłowy projektu.
-- **`src/main/resources`**: Pliki konfiguracyjne i inne zasoby.
-
----
-
-## Wymagania Systemowe
-- Java 11+
-- Apache Cassandra 4.x
-
----
-
-## Jak Uruchomić
-1. Skonfiguruj bazę danych Cassandra zgodnie z wymaganiami w `config.properties`.
-2. Skompiluj projekt za pomocą **Maven**:
-   ```bash
-   mvn clean install
-   ```
-3. Uruchom aplikację:
-   ```bash
-   java -jar target/clinic-management-system.jar
-   ```
 
 ---
 
